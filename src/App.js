@@ -6,6 +6,7 @@ import Logo from './components/Logo';
 import Controls from './components/Controls';
 import Timer from './components/Timer';
 import Spacer from './components/Spacer';
+import Modal from './components/Modal';
 
 function App() {
 	const [pomoLength, setPomoLength] = useState(25);
@@ -37,9 +38,11 @@ function App() {
 				isTimerOn={isTimerOn}
 				setIsTimerOn={setIsTimerOn}
 			/>
+      <Spacer size={79} mobileLargeAndUp={144} desktopAndUp={63} />
+      <Modal />
 		</Wrapper>
 	);
-}
+} 
 
 const Wrapper = styled.main`
 	display: flex;

@@ -75,6 +75,7 @@ const GlobalStyles = createGlobalStyle`
         --color-grey-blue: hsl(226, 100%, 92%, .4);
         --color-navy: hsl(236, 36%, 18%);
         --color-dark-navy: hsl(234, 39%, 14%);
+        --color-modal-overlay: hsl(234, 47%, 8%, .5);
         --color-white: hsl(0, 0%, 100%);
         --color-grey: hsl(229, 52%, 96%);
 
