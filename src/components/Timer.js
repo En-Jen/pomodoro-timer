@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components/macro';
+//import styled from 'styled-components/macro';
 
-function Timer({ pomoLength, setPomoLength }) {
-	const [secondsLeft, setSecondsLeft] = useState(pomoLength * 60);
-	const [isTimerOn, setIsTimerOn] = useState(false);
-
+function Timer({
+	pomoLength,
+	secondsLeft,
+	setSecondsLeft,
+	isTimerOn,
+	setIsTimerOn,
+}) {
 	const formatTimeLeft = secondsLeft => {
 		let mins = Math.floor(secondsLeft / 60);
 		let secs = secondsLeft - mins * 60;
@@ -14,7 +17,7 @@ function Timer({ pomoLength, setPomoLength }) {
 		if (secs < 10) {
 			secs = '0' + secs;
 		}
-		
+
 		return `${mins}:${secs}`;
 	};
 
@@ -37,6 +40,6 @@ function Timer({ pomoLength, setPomoLength }) {
 			{formatTimeLeft(secondsLeft)}
 		</button>
 	);
-} 
+}
 
 export default Timer;
