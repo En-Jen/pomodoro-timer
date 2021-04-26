@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import styled from 'styled-components/macro';
+
 import GlobalStyles from './components/GlobalStyles';
+import Logo from './components/Logo';
 import Controls from './components/Controls';
 import Timer from './components/Timer';
 
@@ -12,8 +15,9 @@ function App() {
   const [timerMode, setTimerMode] = useState('pomodoro');
 
 	return (
-		<div>
+		<Wrapper>
       <GlobalStyles />
+      <Logo />
 			<Controls
         setSecondsLeft={setSecondsLeft}
         timerMode={timerMode}
@@ -30,8 +34,14 @@ function App() {
         isTimerOn={isTimerOn}
         setIsTimerOn={setIsTimerOn}
 			/>
-		</div>
+		</Wrapper>
 	);
 }
+
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default App;
