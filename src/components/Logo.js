@@ -21,7 +21,7 @@ const Image = styled.img`
 	width: 117px;
 	height: auto;
 
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
         width: 156px;
     }
 `;

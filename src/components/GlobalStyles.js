@@ -68,21 +68,46 @@ const GlobalStyles = createGlobalStyle`
 
     /* GLOBAL STYLES */
     html {
+        /* Colors */
         --color-salmon: hsl(0, 91%, 71%);
         --color-lt-blue: hsl(182, 91%, 71%);
         --color-purple: hsl(284, 89%, 74%);
-        --color-grey-blue: hsl(227, 100%, 92%);
+        --color-grey-blue: hsl(226, 100%, 92%, .4);
         --color-navy: hsl(236, 36%, 18%);
         --color-dark-navy: hsl(234, 39%, 14%);
         --color-white: hsl(0, 0%, 100%);
         --color-grey: hsl(229, 52%, 96%);
+
+        /* Fonts */
         --font-kumbh: 'Kumbh Sans', sans-serif;
         --font-roboto: 'Roboto Slab', serif;
         --font-space: 'Space Mono', monospace;
+        --font-size-timer: 5rem;
+        --font-size-timer-start: 0.875rem;
+        --font-size-controls: 0.75rem;
+        --font-size-h2: 1.25rem;
+        --font-size-h3: 0.6875rem;
+        --font-size-label: 0.75rem;
+        --font-size-select: 0.875rem;
+        --font-size-apply: 1rem;
+
+        @media (min-width: 600px) {
+            --font-size-timer: 6.25rem;
+            --font-size-timer-start: 1rem;
+            --font-size-controls: 0.875rem;
+            --font-size-h2: 1.75rem;
+            --font-size-h3: 0.8125rem;
+        }
     }
 
     body {
         background-color: var(--color-navy);
+        font-family: var(--font-kumbh);
+    }
+
+    a:focus, button:focus {
+        outline: 2px dotted var(--color-white);
+        outline-offset: 2px;
     }
 `;
 

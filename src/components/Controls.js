@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components/macro';
+
 import Button from './Button';
 
 function Controls({
@@ -26,12 +28,42 @@ function Controls({
 	}, [timerMode]);
 
 	return (
-		<div>
-			<Button onClick={handleClick}>pomodoro</Button>
-			<Button onClick={handleClick}>short break</Button>
-			<Button onClick={handleClick}>long break</Button>
-		</div>
+		<Wrapper>
+			<Button
+				onClick={handleClick}
+				variant="controls"
+				active={timerMode === 'pomodoro'}
+			>
+				pomodoro
+			</Button>
+			<Button
+				onClick={handleClick}
+				variant="controls"
+				active={timerMode === 'short break'}
+			>
+				short break
+			</Button>
+			<Button
+				onClick={handleClick}
+				variant="controls"
+				active={timerMode === 'long break'}
+			>
+				long break
+			</Button>
+		</Wrapper>
 	);
 }
+
+const Wrapper = styled.div`
+	background-color: var(--color-dark-navy);
+	padding: 5px 6px;
+	border-radius: 31.5px;
+    width: fit-content;
+    text-align: center;
+
+    @media (min-width: 600px) {
+        padding: 8px 7px;
+    }
+`;
 
 export default Controls;
