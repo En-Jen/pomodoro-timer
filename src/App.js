@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GlobalStyles from './components/GlobalStyles';
 import Controls from './components/Controls';
 import Timer from './components/Timer';
 
@@ -12,6 +13,7 @@ function App() {
 
 	return (
 		<div>
+      <GlobalStyles />
 			<Controls
         setSecondsLeft={setSecondsLeft}
         timerMode={timerMode}
