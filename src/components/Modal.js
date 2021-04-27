@@ -13,6 +13,10 @@ function Modal({
 	setShortLength,
 	longLength,
 	setLongLength,
+    font,
+    setFont,
+    color,
+    setColor,
 }) {
 	const [showDialog, setShowDialog] = React.useState(false);
 
@@ -40,6 +44,10 @@ function Modal({
 						setShortLength={setShortLength}
 						longLength={longLength}
 						setLongLength={setLongLength}
+                        font={font}
+                        setFont={setFont}
+                        color={color}
+                        setColor={setColor}
 					/>
 				</ModalContent>
 			</ModalOverlay>

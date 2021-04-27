@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 
 import Button from './Button';
 import NumberInput from './NumberInput';
+import RadioInput from './RadioInput';
 
 function Form({
 	setShowDialog,
@@ -12,6 +13,10 @@ function Form({
 	setShortLength,
 	longLength,
 	setLongLength,
+	font,
+	setFont,
+	color,
+	setColor,
 }) {
 	const handleSubmit = () => {
 		setShowDialog(false);
@@ -45,18 +50,24 @@ function Form({
 						max="60"
 						defaultValue={pomoLength}
 					/>
-                    <NumberInput
+					<NumberInput
 						type="short break"
 						min="1"
 						max="20"
 						defaultValue={shortLength}
 					/>
-                    <NumberInput
+					<NumberInput
 						type="long break"
 						min="5"
 						max="45"
 						defaultValue={longLength}
 					/>
+				</div>
+				<div>
+					<h3>Font</h3>
+					<RadioInput fontName="kumbh sans" font={font} />
+					<RadioInput fontName="roboto slab" font={font} />
+					<RadioInput fontName="space mono" font={font} />
 				</div>
 				<Button variant="modal" onClick={handleSubmit}>
 					Apply

@@ -33,7 +33,7 @@ function Timer({
 		}
 
 		return () => clearInterval(tick);
-	}, [isTimerOn, secondsLeft]);
+	}, [isTimerOn, secondsLeft, setSecondsLeft]);
 
 	return (
 		<button onClick={() => setIsTimerOn(prevState => !prevState)}>

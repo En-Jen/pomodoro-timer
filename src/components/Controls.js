@@ -25,7 +25,7 @@ function Controls({
 		} else if (timerMode === 'long break') {
 			setSecondsLeft(longLength * 60);
 		}
-	}, [timerMode]);
+	}, [timerMode, pomoLength, shortLength, longLength, setSecondsLeft ]);
 
 	return (
 		<Wrapper>

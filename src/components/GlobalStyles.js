@@ -70,7 +70,7 @@ const GlobalStyles = createGlobalStyle`
     html {
         /* Colors */
         --color-salmon: hsl(0, 91%, 71%);
-        --color-lt-blue: hsl(182, 91%, 71%);
+        --color-blue: hsl(182, 91%, 71%);
         --color-purple: hsl(284, 89%, 74%);
         --color-grey-blue: hsl(226, 100%, 92%, .4);
         --color-navy: hsl(236, 36%, 18%);

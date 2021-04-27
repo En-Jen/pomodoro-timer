@@ -15,6 +15,8 @@ function App() {
 	const [isTimerOn, setIsTimerOn] = useState(false);
 	const [secondsLeft, setSecondsLeft] = useState(pomoLength * 60);
 	const [timerMode, setTimerMode] = useState('pomodoro');
+  const [font, setFont] = useState('kumbh sans');
+  const [color, setColor] = useState('salmon');
 
 	return (
 		<Wrapper>
@@ -46,6 +48,10 @@ function App() {
 				setShortLength={setShortLength}
 				longLength={longLength}
 				setLongLength={setLongLength}
+        font={font}
+        setFont={setFont}
+        color={color}
+        setColor={setColor}
 			/>
 		</Wrapper>
 	);
