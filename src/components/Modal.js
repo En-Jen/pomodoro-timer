@@ -17,6 +17,7 @@ function Modal({
     setFont,
     color,
     setColor,
+    setIsTimerOn,
 }) {
 	const [showDialog, setShowDialog] = React.useState(false);
 
@@ -48,6 +49,7 @@ function Modal({
                         setFont={setFont}
                         color={color}
                         setColor={setColor}
+                        setIsTimerOn={setIsTimerOn}
 					/>
 				</ModalContent>
 			</ModalOverlay>

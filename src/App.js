@@ -52,6 +52,7 @@ function App() {
         setFont={setFont}
         color={color}
         setColor={setColor}
+        setIsTimerOn={setIsTimerOn}
 			/>
 		</Wrapper>
 	);
