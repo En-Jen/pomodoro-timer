@@ -78,32 +78,59 @@ const GlobalStyles = createGlobalStyle`
         --color-modal-overlay: hsl(234, 47%, 8%, .5);
         --color-white: hsl(0, 0%, 100%);
         --color-grey: hsl(229, 52%, 96%);
+        --color-grey-border: hsl(0, 2%, 89%);
 
         /* Fonts */
         --font-kumbh: 'Kumbh Sans', sans-serif;
         --font-roboto: 'Roboto Slab', serif;
         --font-space: 'Space Mono', monospace;
         --font-size-timer: 5rem;
-        --font-size-timer-start: 0.875rem;
         --font-size-controls: 0.75rem;
         --font-size-h2: 1.25rem;
         --font-size-h3: 0.6875rem;
+        --font-size-h4: 0.875rem;
         --font-size-label: 0.75rem;
         --font-size-select: 0.875rem;
         --font-size-apply: 1rem;
 
         @media (min-width: 600px) {
             --font-size-timer: 6.25rem;
-            --font-size-timer-start: 1rem;
             --font-size-controls: 0.875rem;
             --font-size-h2: 1.75rem;
             --font-size-h3: 0.8125rem;
+            --font-size-h4: 1rem;
         }
     }
 
     body {
         background-color: var(--color-navy);
         font-family: var(--font-kumbh);
+    }
+
+    h2 {
+        font-size: var(--font-size-h2);
+        color: var(---color-dark-navy);
+    }
+
+    h3 {
+        font-size: var(--font-size-h3);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(---color-dark-navy);
+
+        @media (min-width: 600px) {
+            letter-spacing: 5px;
+        }
+    }
+
+    h4 {
+        font-size: var(--font-size-h4);
+        letter-spacing: 13px;
+        text-transform: uppercase;
+
+        @media (min-width: 600px) {
+            letter-spacing: 16px;
+        }
     }
 
     a:focus, button:focus {

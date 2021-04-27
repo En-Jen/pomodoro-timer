@@ -1,18 +1,24 @@
 import React from 'react';
-import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
+import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import styled from 'styled-components/macro';
 
 import Button from './Button';
+import Form from './Form';
 
-function Modal() {
+function Modal({
+	pomoLength,
+	setPomoLength,
+	shortLength,
+	setShortLength,
+	longLength,
+	setLongLength,
+}) {
 	const [showDialog, setShowDialog] = React.useState(false);
-	const open = () => setShowDialog(true);
-	const close = () => setShowDialog(false);
 
 	return (
 		<div>
-			<Button onClick={open}>
+			<Button onClick={() => setShowDialog(true)}>
 				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28">
 					<path
 						fill="#D7E0FF"
@@ -21,13 +27,20 @@ function Modal() {
 					/>
 				</svg>
 			</Button>
-			<ModalOverlay isOpen={showDialog} onDismiss={close}>
-				<ModalContent>
-					<p>
-						The overlay styles are a white fade instead of the
-						default black fade.
-					</p>
-					<button onClick={close}>Very nice.</button>
+			<ModalOverlay
+				isOpen={showDialog}
+				onDismiss={() => setShowDialog(false)}
+			>
+				<ModalContent aria-label="settings pane">
+					<Form
+						setShowDialog={setShowDialog}
+						pomoLength={pomoLength}
+						setPomoLength={setPomoLength}
+						shortLength={shortLength}
+						setShortLength={setShortLength}
+						longLength={longLength}
+						setLongLength={setLongLength}
+					/>
 				</ModalContent>
 			</ModalOverlay>
 		</div>
@@ -36,12 +49,13 @@ function Modal() {
 
 const ModalOverlay = styled(DialogOverlay)`
 	background-color: var(--color-modal-overlay);
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 `;
 
 const ModalContent = styled(DialogContent)`
-    border-radius: 15px;
+	border-radius: 15px;
+	padding: 0;
 `;
 
 export default Modal;

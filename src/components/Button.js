@@ -47,6 +47,11 @@ const ControlsBtn = styled(BaseBtn)`
 
 const ModalBtn = styled(BaseBtn)`
 	border-radius: 26.5px;
+    background-color: var(--color-salmon);
+    font-size: var(--font-size-apply);
+    color: var(--color-white);
+    width: 140px;
+    height: 53px;
 `;
 
 export default Button;
