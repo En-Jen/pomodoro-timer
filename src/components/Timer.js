@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 function Timer({
 	secondsLeft,
@@ -10,6 +12,7 @@ function Timer({
 	timerLength,
 	timerText,
 	setTimerText,
+    theme
 }) {
 	useEffect(() => {
 		if (isTimerOn) {
@@ -68,11 +71,34 @@ function Timer({
 		return `${mins}:${secs}`;
 	};
 
+    const getProgBarMaxVal = () => {
+        let maxVal;
+        if (timerMode === 'pomodoro') {
+            maxVal = timerLength.pomo * 60;
+		} else if (timerMode === 'short break') {
+            maxVal = timerLength.short * 60
+		} else if (timerMode === 'long break') {
+            maxVal = timerLength.long * 60;
+		}
+        return maxVal;
+    }
+
 	return (
 		<Wrapper>
 			<TimerDisplay onClick={handleClick}>
-				{formatTimeLeft(secondsLeft)}
-				<h4>{timerText}</h4>
+				<CircularProgressbarWithChildren
+					value={secondsLeft}
+					maxValue={getProgBarMaxVal()}
+                    strokeWidth={3}
+                    styles={buildStyles({
+                        pathTransitionDuration: .8,
+                        pathColor: theme.color,
+                        trailColor: 'transparent',
+                      })}
+				>
+					{formatTimeLeft(secondsLeft)}
+					<h4>{timerText}</h4>
+				</CircularProgressbarWithChildren>
 			</TimerDisplay>
 		</Wrapper>
 	);
@@ -81,33 +107,33 @@ function Timer({
 const Wrapper = styled.div`
 	height: 300px;
 	width: 300px;
-    border-radius: 50%;
-    background-image: var(--linear-gradient);
-    box-shadow: var(--box-shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	border-radius: 50%;
+	background-image: var(--linear-gradient);
+	box-shadow: var(--box-shadow);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    @media (min-width: 600px) {
-        height: 410px;
-        width: 410px;
-    }
+	@media (min-width: 600px) {
+		height: 410px;
+		width: 410px;
+	}
 `;
 
 const TimerDisplay = styled.button`
-    border: none;
-    height: 267.8px;
-    width: 267.8px;
-    border-radius: 50%;
-    background-color: var(--color-dark-navy);
-    color: var(--color-grey-blue);
-    font-size: var(--font-size-timer);
-    cursor: pointer;
+	border: none;
+	height: 267.8px;
+	width: 267.8px;
+	border-radius: 50%;
+	background-color: var(--color-dark-navy);
+	color: var(--color-grey-blue);
+	font-size: var(--font-size-timer);
+	cursor: pointer;
 
-    @media (min-width: 600px) {
-        height: 366px;
-        width: 366px;
-    }
+	@media (min-width: 600px) {
+		height: 366px;
+		width: 366px;
+	}
 `;
 
 export default Timer;

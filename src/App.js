@@ -43,6 +43,7 @@ function App() {
           timerMode={timerMode}
           timerText={timerText}
           setTimerText={setTimerText}
+          theme={theme}
 				/>
 				<Spacer size={79} mobileLargeAndUp={144} desktopAndUp={63} />
 				<Modal
