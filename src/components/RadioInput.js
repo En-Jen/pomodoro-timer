@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-function RadioInput({ font, setFont, color, setColor, prefName, setting }) {
+function RadioInput({ theme, setTheme, prefName, setting, value }) {
 	const handleChange = e => {
 		if (e.target.name === 'font') {
-            setFont(e.target.value);
-        }
-        if (e.target.name === 'color') {
-            setColor(e.target.value);
-        }
+			setTheme({ ...theme, font: e.target.value });
+		}
+		if (e.target.name === 'color') {
+			setTheme({ ...theme, color: e.target.value });
+		}
 	};
 
 	let Component;
 	let checked;
 	if (setting === 'font') {
 		Component = FontRadioInput;
-		checked = font === prefName;
+		checked = theme.font === value;
 	} else if (setting === 'color') {
 		Component = ColorRadioInput;
-		checked = color === prefName;
+		checked = theme.color === value;
 	} else {
 		throw new Error(`Unrecognized RadioInput setting: ${setting}`);
 	}
@@ -29,7 +29,7 @@ function RadioInput({ font, setFont, color, setColor, prefName, setting }) {
 				type="radio"
 				id={prefName}
 				name={setting}
-				value={prefName}
+				value={value}
 				defaultChecked={checked}
 				onChange={handleChange}
 			/>

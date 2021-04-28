@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/macro';
+import styled, { ThemeProvider } from 'styled-components/macro';
 
 import GlobalStyles from './components/GlobalStyles';
 import Logo from './components/Logo';
@@ -15,45 +15,49 @@ function App() {
 	const [isTimerOn, setIsTimerOn] = useState(false);
 	const [secondsLeft, setSecondsLeft] = useState(pomoLength * 60);
 	const [timerMode, setTimerMode] = useState('pomodoro');
-  const [font, setFont] = useState('kumbh sans');
-  const [color, setColor] = useState('salmon');
+	const [theme, setTheme] = useState({
+		font: "'Kumbh Sans', sans-serif",
+		color: 'hsl(0, 91%, 71%)',
+	});
+
+	console.log(theme);
 
 	return (
 		<Wrapper>
-			<GlobalStyles />
-			<Logo />
-			<Spacer size={45} mobileLargeAndUp={55} />
-			<Controls
-				setSecondsLeft={setSecondsLeft}
-				timerMode={timerMode}
-				setTimerMode={setTimerMode}
-				pomoLength={pomoLength}
-				shortLength={shortLength}
-				longLength={longLength}
-				setIsTimerOn={setIsTimerOn}
-			/>
-			<Spacer size={48} mobileLargeAndUp={109} desktopAndUp={45} />
-			<Timer
-				pomoLength={pomoLength}
-				secondsLeft={secondsLeft}
-				setSecondsLeft={setSecondsLeft}
-				isTimerOn={isTimerOn}
-				setIsTimerOn={setIsTimerOn}
-			/>
-			<Spacer size={79} mobileLargeAndUp={144} desktopAndUp={63} />
-			<Modal
-				pomoLength={pomoLength}
-				setPomoLength={setPomoLength}
-				shortLength={shortLength}
-				setShortLength={setShortLength}
-				longLength={longLength}
-				setLongLength={setLongLength}
-        font={font}
-        setFont={setFont}
-        color={color}
-        setColor={setColor}
-        setIsTimerOn={setIsTimerOn}
-			/>
+			<ThemeProvider theme={theme}>
+				<GlobalStyles />
+				<Logo />
+				<Spacer size={45} mobileLargeAndUp={55} />
+				<Controls
+					setSecondsLeft={setSecondsLeft}
+					timerMode={timerMode}
+					setTimerMode={setTimerMode}
+					pomoLength={pomoLength}
+					shortLength={shortLength}
+					longLength={longLength}
+					setIsTimerOn={setIsTimerOn}
+				/>
+				<Spacer size={48} mobileLargeAndUp={109} desktopAndUp={45} />
+				<Timer
+					pomoLength={pomoLength}
+					secondsLeft={secondsLeft}
+					setSecondsLeft={setSecondsLeft}
+					isTimerOn={isTimerOn}
+					setIsTimerOn={setIsTimerOn}
+				/>
+				<Spacer size={79} mobileLargeAndUp={144} desktopAndUp={63} />
+				<Modal
+					pomoLength={pomoLength}
+					setPomoLength={setPomoLength}
+					shortLength={shortLength}
+					setShortLength={setShortLength}
+					longLength={longLength}
+					setLongLength={setLongLength}
+          theme={theme}
+          setTheme={setTheme}
+					setIsTimerOn={setIsTimerOn}
+				/>
+			</ThemeProvider>
 		</Wrapper>
 	);
 }

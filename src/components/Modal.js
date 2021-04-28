@@ -13,10 +13,8 @@ function Modal({
 	setShortLength,
 	longLength,
 	setLongLength,
-    font,
-    setFont,
-    color,
-    setColor,
+    theme,
+    setTheme,
     setIsTimerOn,
 }) {
 	const [showDialog, setShowDialog] = React.useState(false);
@@ -45,10 +43,8 @@ function Modal({
 						setShortLength={setShortLength}
 						longLength={longLength}
 						setLongLength={setLongLength}
-                        font={font}
-                        setFont={setFont}
-                        color={color}
-                        setColor={setColor}
+                        theme={theme}
+                        setTheme={setTheme}
                         setIsTimerOn={setIsTimerOn}
 					/>
 				</ModalContent>

@@ -13,11 +13,9 @@ function Form({
 	setShortLength,
 	longLength,
 	setLongLength,
-	font,
-	setFont,
-	color,
-	setColor,
-    setIsTimerOn,
+    theme,
+    setTheme,
+	setIsTimerOn,
 }) {
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -51,81 +49,48 @@ function Form({
 						min="5"
 						max="60"
 						value={pomoLength}
-                        setIsTimerOn={setIsTimerOn}
-                        setPomoLength={setPomoLength}
+						setIsTimerOn={setIsTimerOn}
+						setPomoLength={setPomoLength}
 					/>
 					<NumberInput
 						type="short break"
 						min="1"
 						max="20"
 						value={shortLength}
-                        setIsTimerOn={setIsTimerOn}
-                        setShortLength={setShortLength}
+						setIsTimerOn={setIsTimerOn}
+						setShortLength={setShortLength}
 					/>
 					<NumberInput
 						type="long break"
 						min="5"
 						max="45"
 						value={longLength}
-                        setIsTimerOn={setIsTimerOn}
-                        setLongLength={setLongLength}
+						setIsTimerOn={setIsTimerOn}
+						setLongLength={setLongLength}
 					/>
-					{/* <div>
-						<label htmlFor="pomodoro">pomodoro</label>
-						<input
-							type="number"
-							name="pomodoro"
-							id="pomodoro"
-							min="5"
-							max="60"
-							value={pomoLength}
-							onChange={handleChange}
-						/>
-					</div>
-					<div>
-						<label htmlFor="short break">short break</label>
-						<input
-							type="number"
-							name="short break"
-							id="short break"
-							min="1"
-							max="20"
-							value={shortLength}
-							onChange={handleChange}
-						/>
-					</div>
-					<div>
-						<label htmlFor="long break">long break</label>
-						<input
-							type="number"
-							name="long break"
-							id="long break"
-							min="5"
-							max="45"
-							value={longLength}
-							onChange={handleChange}
-						/>
-					</div> */}
 				</div>
 				<div>
 					<h3>Font</h3>
 					<RadioInput
 						prefName="kumbh sans"
 						setting="font"
-                        font={font}
-                        setFont={setFont}
+                        value="'Kumbh Sans', sans-serif"
+                        theme={theme}
+                        setTheme={setTheme}
 					/>
 					<RadioInput
 						prefName="roboto slab"
 						setting="font"
-                        font={font}
-                        setFont={setFont}
+                        value="'Roboto Slab', serif"
+                        theme={theme}
+                        setTheme={setTheme}
 					/>
 					<RadioInput
 						prefName="space mono"
 						setting="font"
-                        font={font}
-                        setFont={setFont}
+                        value="'Space Mono', monospace"
+                        theme={theme}
+                        setTheme={setTheme}
 					/>
 				</div>
 				<div>
@@ -133,23 +98,26 @@ function Form({
 					<RadioInput
 						prefName="salmon"
 						setting="color"
-                        color={color}
-                        setColor={setColor}
+                        value="hsl(0, 91%, 71%)"
+                        theme={theme}
+                        setTheme={setTheme}
 					/>
 					<RadioInput
 						prefName="blue"
 						setting="color"
-                        color={color}
-                        setColor={setColor}
+                        value="hsl(182, 91%, 71%)"
+                        theme={theme}
+                        setTheme={setTheme}
 					/>
 					<RadioInput
 						prefName="purple"
 						setting="color"
-                        color={color}
-                        setColor={setColor}
+                        value="hsl(284, 89%, 74%)"
+                        theme={theme}
+                        setTheme={setTheme}
 					/>
 				</div>
-				<Button variant="modal" type="submit" onClick={handleSubmit}>
+				<Button variant="modal" type="submit">
 					Apply
 				</Button>
 			</StyledForm>

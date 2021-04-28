@@ -33,8 +33,7 @@ const UnstyledBtn = styled(BaseBtn)`
 
 const ControlsBtn = styled(BaseBtn)`
 	border-radius: 26.5px;
-	background-color: ${p =>
-		p.active ? 'var(--color-salmon)' : 'transparent'};
+    background-color: ${p => p.active ? p.theme.color : 'transparent'};
     width: 105px;
 	height: 48px;
 	color: ${p => (p.active ? 'var(--color-navy)' : 'var(--color-grey-blue)')};
@@ -47,7 +46,7 @@ const ControlsBtn = styled(BaseBtn)`
 
 const ModalBtn = styled(BaseBtn)`
 	border-radius: 26.5px;
-    background-color: var(--color-salmon);
+    background-color: ${p => p.theme.color};
     font-size: var(--font-size-apply);
     color: var(--color-white);
     width: 140px;

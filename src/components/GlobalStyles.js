@@ -104,7 +104,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         background-color: var(--color-navy);
-        font-family: var(--font-kumbh);
+        font-family: ${p => p.theme.font};
     }
 
     h2 {
