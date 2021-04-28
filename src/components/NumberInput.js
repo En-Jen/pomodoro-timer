@@ -2,9 +2,8 @@ import React from 'react';
 
 function NumberInput({
 	setIsTimerOn,
-	setPomoLength,
-	setShortLength,
-	setLongLength,
+    timerLength,
+    setTimerLength,
 	type,
 	min,
 	max,
@@ -13,13 +12,13 @@ function NumberInput({
 	const handleChange = e => {
 		setIsTimerOn(false);
 		if (e.target.id === 'pomodoro') {
-			setPomoLength(e.target.value);
+            setTimerLength({...timerLength, pomo: e.target.value});
 		}
 		if (e.target.id === 'short break') {
-			setShortLength(e.target.value);
+            setTimerLength({...timerLength, short: e.target.value});
 		}
 		if (e.target.id === 'long break') {
-			setLongLength(e.target.value);
+            setTimerLength({...timerLength, long: e.target.value});
 		}
 	};
 

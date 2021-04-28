@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 
 import Button from './Button';
 
-function Controls({
-	timerMode,
-	setTimerMode,
-	setSecondsLeft,
-	pomoLength,
-	shortLength,
-	longLength,
-	setIsTimerOn,
-}) {
+function Controls({ setSecondsLeft, timerLength, setIsTimerOn }) {
+    const [timerMode, setTimerMode] = useState('pomodoro');
+
 	const handleClick = e => {
 		setTimerMode(e.target.innerHTML);
 		setIsTimerOn(false);
@@ -19,13 +13,13 @@ function Controls({
 
 	useEffect(() => {
 		if (timerMode === 'pomodoro') {
-			setSecondsLeft(pomoLength * 60);
+			setSecondsLeft(timerLength.pomo * 60);
 		} else if (timerMode === 'short break') {
-			setSecondsLeft(shortLength * 60);
+			setSecondsLeft(timerLength.short * 60);
 		} else if (timerMode === 'long break') {
-			setSecondsLeft(longLength * 60);
+			setSecondsLeft(timerLength.long * 60);
 		}
-	}, [timerMode, pomoLength, shortLength, longLength, setSecondsLeft ]);
+	}, [timerMode, timerLength, setSecondsLeft]);
 
 	return (
 		<Wrapper>
@@ -58,12 +52,12 @@ const Wrapper = styled.div`
 	background-color: var(--color-dark-navy);
 	padding: 5px 6px;
 	border-radius: 31.5px;
-    width: fit-content;
-    text-align: center;
+	width: fit-content;
+	text-align: center;
 
-    @media (min-width: 600px) {
-        padding: 8px 7px;
-    }
+	@media (min-width: 600px) {
+		padding: 8px 7px;
+	}
 `;
 
 export default Controls;

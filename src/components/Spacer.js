@@ -1,5 +1,6 @@
 // Borrowed and tweaked from https://www.joshwcomeau.com/react/modern-spacer-gif/
 // Used to create space between components
+
 import styled from 'styled-components/macro';
 
 function getResponsiveSpace(breakpoint) {

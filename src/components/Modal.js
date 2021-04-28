@@ -7,12 +7,8 @@ import Button from './Button';
 import Form from './Form';
 
 function Modal({
-	pomoLength,
-	setPomoLength,
-	shortLength,
-	setShortLength,
-	longLength,
-	setLongLength,
+    timerLength,
+    setTimerLength,
     theme,
     setTheme,
     setIsTimerOn,
@@ -37,12 +33,8 @@ function Modal({
 				<ModalContent aria-label="settings pane">
 					<Form
 						setShowDialog={setShowDialog}
-						pomoLength={pomoLength}
-						setPomoLength={setPomoLength}
-						shortLength={shortLength}
-						setShortLength={setShortLength}
-						longLength={longLength}
-						setLongLength={setLongLength}
+                        timerLength={timerLength}
+                        setTimerLength={setTimerLength}
                         theme={theme}
                         setTheme={setTheme}
                         setIsTimerOn={setIsTimerOn}

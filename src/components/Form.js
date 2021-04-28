@@ -7,12 +7,8 @@ import RadioInput from './RadioInput';
 
 function Form({
 	setShowDialog,
-	pomoLength,
-	setPomoLength,
-	shortLength,
-	setShortLength,
-	longLength,
-	setLongLength,
+    timerLength,
+    setTimerLength,
     theme,
     setTheme,
 	setIsTimerOn,
@@ -48,25 +44,28 @@ function Form({
 						type="pomodoro"
 						min="5"
 						max="60"
-						value={pomoLength}
+						value={timerLength.pomo}
 						setIsTimerOn={setIsTimerOn}
-						setPomoLength={setPomoLength}
+                        timerLength={timerLength}
+                        setTimerLength={setTimerLength}
 					/>
 					<NumberInput
 						type="short break"
 						min="1"
 						max="20"
-						value={shortLength}
+						value={timerLength.short}
 						setIsTimerOn={setIsTimerOn}
-						setShortLength={setShortLength}
+                        timerLength={timerLength}
+                        setTimerLength={setTimerLength}
 					/>
 					<NumberInput
 						type="long break"
 						min="5"
 						max="45"
-						value={longLength}
+						value={timerLength.long}
 						setIsTimerOn={setIsTimerOn}
-						setLongLength={setLongLength}
+                        timerLength={timerLength}
+                        setTimerLength={setTimerLength}
 					/>
 				</div>
 				<div>
