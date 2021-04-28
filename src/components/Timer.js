@@ -6,7 +6,51 @@ function Timer({
 	setSecondsLeft,
 	isTimerOn,
 	setIsTimerOn,
+	timerMode,
+	timerLength,
+    timerText,
+    setTimerText
 }) {
+	useEffect(() => {
+		if (isTimerOn) {
+			var tick = setInterval(() => {
+				setSecondsLeft(secondsLeft => secondsLeft - 1);
+			}, 1000);
+		}
+
+		if (secondsLeft === 0) {
+			setIsTimerOn(false);
+			setTimerText('restart');
+			clearInterval(tick);
+		}
+
+		return () => clearInterval(tick);
+	}, [isTimerOn, secondsLeft, setSecondsLeft, setIsTimerOn, setTimerText]);
+
+    const resetSecondsLeft = () => {
+        if (timerMode === 'pomodoro') {
+            setSecondsLeft(timerLength.pomo * 60);
+        } else if (timerMode === 'short break') {
+            setSecondsLeft(timerLength.short * 60);
+        } else if (timerMode === 'long break') {
+            setSecondsLeft(timerLength.long * 60);
+        }
+    }
+
+	const handleClick = () => {
+		setIsTimerOn(prevState => !prevState);
+
+		if (timerText === 'start' || timerText === 'resume' || timerText === 'restart') {
+			setTimerText('pause');
+		} else if (timerText === 'pause') {
+			setTimerText('resume');
+		}
+
+        if (secondsLeft === 0) {
+            resetSecondsLeft();
+        }
+	};
+
 	const formatTimeLeft = secondsLeft => {
 		let mins = Math.floor(secondsLeft / 60);
 		let secs = secondsLeft - mins * 60;
@@ -20,23 +64,12 @@ function Timer({
 		return `${mins}:${secs}`;
 	};
 
-	useEffect(() => {
-		if (isTimerOn) {
-			var tick = setInterval(() => {
-				setSecondsLeft(secondsLeft => secondsLeft - 1);
-			}, 1000);
-		}
-
-		if (secondsLeft === 0) {
-			clearInterval(tick);
-		}
-
-		return () => clearInterval(tick);
-	}, [isTimerOn, secondsLeft, setSecondsLeft]);
-
 	return (
-		<button onClick={() => setIsTimerOn(prevState => !prevState)}>
-			{formatTimeLeft(secondsLeft)}
+		<button onClick={handleClick}>
+			<div>
+				{formatTimeLeft(secondsLeft)}
+				<h4>{timerText}</h4>
+			</div>
 		</button>
 	);
 }

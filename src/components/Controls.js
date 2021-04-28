@@ -1,14 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
 
 import Button from './Button';
 
-function Controls({ setSecondsLeft, timerLength, setIsTimerOn }) {
-    const [timerMode, setTimerMode] = useState('pomodoro');
-
+function Controls({
+	setSecondsLeft,
+	timerLength,
+	setIsTimerOn,
+	timerMode,
+	setTimerMode,
+    setTimerText
+}) {
+    // TODO: reuse resetSecondsLeft function used below (found in Timer.js)
+    // to make more DRY
 	const handleClick = e => {
 		setTimerMode(e.target.innerHTML);
 		setIsTimerOn(false);
+        setTimerText('start');
+
+        // Reset seconndsLeft
+        if (timerMode === 'pomodoro') {
+            setSecondsLeft(timerLength.pomo * 60);
+        } else if (timerMode === 'short break') {
+            setSecondsLeft(timerLength.short * 60);
+        } else if (timerMode === 'long break') {
+            setSecondsLeft(timerLength.long * 60);
+        }
 	};
 
 	useEffect(() => {

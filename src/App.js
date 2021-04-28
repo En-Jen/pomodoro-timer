@@ -11,6 +11,8 @@ import Modal from './components/Modal';
 function App() {
   const [timerLength, setTimerLength] = useState({ pomo: 25, short: 5, long: 15 });
 	const [isTimerOn, setIsTimerOn] = useState(false);
+  const [timerMode, setTimerMode] = useState('pomodoro');
+  const [timerText, setTimerText] = useState('start');
 	const [secondsLeft, setSecondsLeft] = useState(timerLength.pomo * 60);
 	const [theme, setTheme] = useState({
 		font: "'Kumbh Sans', sans-serif",
@@ -27,6 +29,9 @@ function App() {
 					setSecondsLeft={setSecondsLeft}
           timerLength={timerLength}
 					setIsTimerOn={setIsTimerOn}
+          timerMode={timerMode}
+          setTimerMode={setTimerMode}
+          setTimerText={setTimerText}
 				/>
 				<Spacer size={48} mobileLargeAndUp={109} desktopAndUp={45} />
 				<Timer
@@ -35,6 +40,9 @@ function App() {
 					setSecondsLeft={setSecondsLeft}
 					isTimerOn={isTimerOn}
 					setIsTimerOn={setIsTimerOn}
+          timerMode={timerMode}
+          timerText={timerText}
+          setTimerText={setTimerText}
 				/>
 				<Spacer size={79} mobileLargeAndUp={144} desktopAndUp={63} />
 				<Modal
