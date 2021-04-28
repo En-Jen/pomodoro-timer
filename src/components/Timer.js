@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-//import styled from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
 function Timer({
 	secondsLeft,
@@ -8,8 +8,8 @@ function Timer({
 	setIsTimerOn,
 	timerMode,
 	timerLength,
-    timerText,
-    setTimerText
+	timerText,
+	setTimerText,
 }) {
 	useEffect(() => {
 		if (isTimerOn) {
@@ -27,28 +27,32 @@ function Timer({
 		return () => clearInterval(tick);
 	}, [isTimerOn, secondsLeft, setSecondsLeft, setIsTimerOn, setTimerText]);
 
-    const resetSecondsLeft = () => {
-        if (timerMode === 'pomodoro') {
-            setSecondsLeft(timerLength.pomo * 60);
-        } else if (timerMode === 'short break') {
-            setSecondsLeft(timerLength.short * 60);
-        } else if (timerMode === 'long break') {
-            setSecondsLeft(timerLength.long * 60);
-        }
-    }
+	const resetSecondsLeft = () => {
+		if (timerMode === 'pomodoro') {
+			setSecondsLeft(timerLength.pomo * 60);
+		} else if (timerMode === 'short break') {
+			setSecondsLeft(timerLength.short * 60);
+		} else if (timerMode === 'long break') {
+			setSecondsLeft(timerLength.long * 60);
+		}
+	};
 
 	const handleClick = () => {
 		setIsTimerOn(prevState => !prevState);
 
-		if (timerText === 'start' || timerText === 'resume' || timerText === 'restart') {
+		if (
+			timerText === 'start' ||
+			timerText === 'resume' ||
+			timerText === 'restart'
+		) {
 			setTimerText('pause');
 		} else if (timerText === 'pause') {
 			setTimerText('resume');
 		}
 
-        if (secondsLeft === 0) {
-            resetSecondsLeft();
-        }
+		if (secondsLeft === 0) {
+			resetSecondsLeft();
+		}
 	};
 
 	const formatTimeLeft = secondsLeft => {
@@ -65,13 +69,45 @@ function Timer({
 	};
 
 	return (
-		<button onClick={handleClick}>
-			<div>
+		<Wrapper>
+			<TimerDisplay onClick={handleClick}>
 				{formatTimeLeft(secondsLeft)}
 				<h4>{timerText}</h4>
-			</div>
-		</button>
+			</TimerDisplay>
+		</Wrapper>
 	);
 }
+
+const Wrapper = styled.div`
+	height: 300px;
+	width: 300px;
+    border-radius: 50%;
+    background-image: var(--linear-gradient);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 600px) {
+        height: 410px;
+        width: 410px;
+    }
+`;
+
+const TimerDisplay = styled.button`
+    border: none;
+    height: 267.8px;
+    width: 267.8px;
+    border-radius: 50%;
+    background-color: var(--color-dark-navy);
+    color: var(--color-grey-blue);
+    font-size: var(--font-size-timer);
+    cursor: pointer;
+
+    @media (min-width: 600px) {
+        height: 366px;
+        width: 366px;
+    }
+`;
 
 export default Timer;

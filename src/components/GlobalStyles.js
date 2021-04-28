@@ -72,10 +72,13 @@ const GlobalStyles = createGlobalStyle`
         --color-salmon: hsl(0, 91%, 71%);
         --color-blue: hsl(182, 91%, 71%);
         --color-purple: hsl(284, 89%, 74%);
-        --color-grey-blue: hsl(226, 100%, 92%, .4);
+        --color-grey-blue-opaque: hsl(226, 100%, 92%, .4);
+        --color-grey-blue: hsl(226, 99%, 92%);
         --color-navy: hsl(236, 36%, 18%);
         --color-dark-navy: hsl(234, 39%, 14%);
         --color-modal-overlay: hsl(234, 47%, 8%, .5);
+        --linear-gradient: linear-gradient(to bottom right, hsl(235, 49%, 11%), hsl(234, 33%, 27%));
+        --box-shadow: -50px -50px 100px hsl(234, 40%, 25%), 50px 50px 100px hsl(234, 45%, 13%);
         --color-white: hsl(0, 0%, 100%);
         --color-grey: hsl(229, 52%, 96%);
         --color-grey-border: hsl(0, 2%, 89%);
@@ -134,7 +137,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     a:focus, button:focus {
-        outline: 2px dotted var(--color-white);
+        outline: 2px dotted var(--color-grey-blue);
         outline-offset: 2px;
     }
 `;

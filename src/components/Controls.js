@@ -9,23 +9,23 @@ function Controls({
 	setIsTimerOn,
 	timerMode,
 	setTimerMode,
-    setTimerText
+	setTimerText,
 }) {
-    // TODO: reuse resetSecondsLeft function used below (found in Timer.js)
-    // to make more DRY
+	// TODO: reuse resetSecondsLeft function used below (found in Timer.js)
+	// to make more DRY
 	const handleClick = e => {
 		setTimerMode(e.target.innerHTML);
 		setIsTimerOn(false);
-        setTimerText('start');
+		setTimerText('start');
 
-        // Reset seconndsLeft
-        if (timerMode === 'pomodoro') {
-            setSecondsLeft(timerLength.pomo * 60);
-        } else if (timerMode === 'short break') {
-            setSecondsLeft(timerLength.short * 60);
-        } else if (timerMode === 'long break') {
-            setSecondsLeft(timerLength.long * 60);
-        }
+		// Reset seconndsLeft
+		if (timerMode === 'pomodoro') {
+			setSecondsLeft(timerLength.pomo * 60);
+		} else if (timerMode === 'short break') {
+			setSecondsLeft(timerLength.short * 60);
+		} else if (timerMode === 'long break') {
+			setSecondsLeft(timerLength.long * 60);
+		}
 	};
 
 	useEffect(() => {
@@ -69,8 +69,12 @@ const Wrapper = styled.div`
 	background-color: var(--color-dark-navy);
 	padding: 5px 6px;
 	border-radius: 31.5px;
+	// On small mobile screen widths, this will force a line break
 	width: fit-content;
 	text-align: center;
+	// Create a new stacking context so that timer's box shadow doesn't
+	// show on top of Controls
+	isolation: isolate;
 
 	@media (min-width: 600px) {
 		padding: 8px 7px;
