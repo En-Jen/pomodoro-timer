@@ -167,8 +167,10 @@ const NumberInputWrapper = styled.div`
 
 const RadioInputWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 40px);
+    grid-template-rows: 40px;
     gap: 16px;
+    justify-content: center;
 `;
 
 export default Form;

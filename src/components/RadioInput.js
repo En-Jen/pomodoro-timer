@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+import CheckIcon from './CheckIcon';
+import VisuallyHidden from './VisuallyHidden';
+
 function RadioInput({ theme, setTheme, prefName, setting, value }) {
 	const handleChange = e => {
 		if (e.target.name === 'font') {
@@ -11,20 +14,21 @@ function RadioInput({ theme, setTheme, prefName, setting, value }) {
 		}
 	};
 
-	let Component;
-	let checked;
+	let Label, checked, LabelContent;
 	if (setting === 'font') {
-		Component = FontRadioInput;
+		Label = FontLabel;
 		checked = theme.font === value;
+        LabelContent = 'Aa';
 	} else if (setting === 'color') {
-		Component = ColorRadioInput;
+		Label = ColorLabel;
 		checked = theme.color === value;
+        LabelContent = checked ? <CheckIcon /> : '';
 	} else {
-		throw new Error(`Unrecognized RadioInput setting: ${setting}`);
+		throw new Error(`Unrecognized Label setting: ${setting}`);
 	}
 
 	return (
-		<Component>
+		<div>
 			<Input
 				type="radio"
 				id={prefName}
@@ -33,61 +37,72 @@ function RadioInput({ theme, setTheme, prefName, setting, value }) {
 				defaultChecked={checked}
 				onChange={handleChange}
 			/>
-			<Label htmlFor={prefName} value={value}>{prefName}</Label>
-		</Component>
+            <Label htmlFor={prefName} value={value}>{LabelContent}</Label>
+            <VisuallyHidden>{prefName}</VisuallyHidden>
+		</div>
 	);
 }
 
-const BaseRadioInput = styled.div``;
-
-const FontRadioInput = styled(BaseRadioInput)``;
-
-const ColorRadioInput = styled(BaseRadioInput)``;
-
 const Input = styled.input`
-    //opacity: 0;
+    // hide radio inputs so the labels can be styled 
+    opacity: 0;
+    position: fixed;
+    width: 0;
 `;
 
-const Label = styled.label`
-	position: relative;
-	display: inline-block;
+const BaseLabel = styled.label`
+    position: relative;
 	cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .4s;
 
-    // Custom radio button
-	&::before {
-		content: '';
-		position: absolute;
-		display: inline-block;
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		background-color: var(--color-grey);
+    ${Input}:focus + & {
+        outline: 2px dotted var(--color-modal-outline);
+        outline-offset: 2px;
+    }
 
-        ${Input}:checked + & {
-            background-color: var(--color-dark-navy);
-        }
-
-        ${Input}:focus + & {
-            outline: 2px dotted var(--color-modal-outline);
-            outline-offset: 2px;
-        }
-	}
-
-    // Content inside custom radio button
-    &::after {
-        content: 'Aa';
-        font-family: ${p => p.value};
-        font-size: 0.9375rem;
-        color: var(--color-navy-opaque);
+    // Ring around labels that starts out opaque before hover
+    &::before {
+        content: '';
         position: absolute;
         display: inline-block;
-        top: 8px;
-        left: 10px;
-
-        ${Input}:checked ~ & {
-            color: white;
-        }
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid var(--color-grey);
+        opacity: 0;
+        transform: scale(.6);
+        transition: transform .3s ease, opacity .3s ease;
     }
+
+    &:hover:before {
+        opacity: 1;
+        transform: scale(1);
+    }
+`;
+
+const FontLabel = styled(BaseLabel)`
+    background-color: var(--color-grey);
+    font-family: ${p => p.value};
+    color: var(--color-navy-opaque);
+
+    &:nth-child(2) {
+        font-weight: 400;
+    }
+
+    ${Input}:checked + & {
+        background-color: var(--color-dark-navy);
+        color: var(--color-white);
+    }
+`;
+
+const ColorLabel = styled(BaseLabel)`
+    background-color: ${p => p.value};
 `;
 
 export default RadioInput;

@@ -110,6 +110,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         background-color: var(--color-navy);
         font-family: ${p => p.theme.font};
+        font-weight: 700;
     }
 
     h2 {
