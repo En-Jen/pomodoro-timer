@@ -125,6 +125,7 @@ const TimerDisplay = styled.button`
 	height: 267.8px;
 	width: 267.8px;
 	border-radius: 50%;
+    padding: 8px;
 	background-color: var(--color-dark-navy);
 	color: var(--color-grey-blue);
 	font-size: var(--font-size-timer);
@@ -133,6 +134,7 @@ const TimerDisplay = styled.button`
 	@media (min-width: 600px) {
 		height: 366px;
 		width: 366px;
+        padding: 13.5px;
 	}
 `;
 

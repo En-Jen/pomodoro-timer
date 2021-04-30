@@ -51,6 +51,11 @@ const ModalBtn = styled(BaseBtn)`
     color: var(--color-white);
     width: 140px;
     height: 53px;
+
+    &:focus {
+        outline: 2px dotted var(--color-modal-outline);
+        outline-offset: 2px;
+    }
 `;
 
 export default Button;

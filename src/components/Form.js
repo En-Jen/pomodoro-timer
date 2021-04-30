@@ -38,84 +38,90 @@ function Form({
 				</Button>
 			</Header>
 			<StyledForm action="" onSubmit={handleSubmit}>
-				<div>
-					<h3>Time (minutes)</h3>
-					<NumberInput
-						type="pomodoro"
-						min="5"
-						max="60"
-						value={timerLength.pomo}
-						setIsTimerOn={setIsTimerOn}
-                        timerLength={timerLength}
-                        setTimerLength={setTimerLength}
-					/>
-					<NumberInput
-						type="short break"
-						min="1"
-						max="20"
-						value={timerLength.short}
-						setIsTimerOn={setIsTimerOn}
-                        timerLength={timerLength}
-                        setTimerLength={setTimerLength}
-					/>
-					<NumberInput
-						type="long break"
-						min="5"
-						max="45"
-						value={timerLength.long}
-						setIsTimerOn={setIsTimerOn}
-                        timerLength={timerLength}
-                        setTimerLength={setTimerLength}
-					/>
-				</div>
-				<div>
-					<h3>Font</h3>
-					<RadioInput
-						prefName="kumbh sans"
-						setting="font"
-                        value="'Kumbh Sans', sans-serif"
-                        theme={theme}
-                        setTheme={setTheme}
-					/>
-					<RadioInput
-						prefName="roboto slab"
-						setting="font"
-                        value="'Roboto Slab', serif"
-                        theme={theme}
-                        setTheme={setTheme}
-					/>
-					<RadioInput
-						prefName="space mono"
-						setting="font"
-                        value="'Space Mono', monospace"
-                        theme={theme}
-                        setTheme={setTheme}
-					/>
-				</div>
-				<div>
-					<h3>Color</h3>
-					<RadioInput
-						prefName="salmon"
-						setting="color"
-                        value="hsl(0, 91%, 71%)"
-                        theme={theme}
-                        setTheme={setTheme}
-					/>
-					<RadioInput
-						prefName="blue"
-						setting="color"
-                        value="hsl(182, 91%, 71%)"
-                        theme={theme}
-                        setTheme={setTheme}
-					/>
-					<RadioInput
-						prefName="purple"
-						setting="color"
-                        value="hsl(284, 89%, 74%)"
-                        theme={theme}
-                        setTheme={setTheme}
-					/>
-				</div>
+				<Fieldset>
+					<SettingHeading>Time (minutes)</SettingHeading>
+                    <NumberInputWrapper>
+                        <NumberInput
+                            type="pomodoro"
+                            min="5"
+                            max="60"
+                            value={timerLength.pomo}
+                            setIsTimerOn={setIsTimerOn}
+                            timerLength={timerLength}
+                            setTimerLength={setTimerLength}
+                        />
+                        <NumberInput
+                            type="short break"
+                            min="1"
+                            max="20"
+                            value={timerLength.short}
+                            setIsTimerOn={setIsTimerOn}
+                            timerLength={timerLength}
+                            setTimerLength={setTimerLength}
+                        />
+                        <NumberInput
+                            type="long break"
+                            min="5"
+                            max="45"
+                            value={timerLength.long}
+                            setIsTimerOn={setIsTimerOn}
+                            timerLength={timerLength}
+                            setTimerLength={setTimerLength}
+                        />
+                    </NumberInputWrapper>
+				</Fieldset>
+				<Fieldset>
+					<SettingHeading>Font</SettingHeading>
+                    <RadioInputWrapper>
+                        <RadioInput
+                            prefName="kumbh sans"
+                            setting="font"
+                            value="'Kumbh Sans', sans-serif"
+                            theme={theme}
+                            setTheme={setTheme}
+                        />
+                        <RadioInput
+                            prefName="roboto slab"
+                            setting="font"
+                            value="'Roboto Slab', serif"
+                            theme={theme}
+                            setTheme={setTheme}
+                        />
+                        <RadioInput
+                            prefName="space mono"
+                            setting="font"
+                            value="'Space Mono', monospace"
+                            theme={theme}
+                            setTheme={setTheme}
+                        />
+                    </RadioInputWrapper>
+				</Fieldset>
+				<Fieldset>
+					<SettingHeading>Color</SettingHeading>
+                    <RadioInputWrapper>
+                        <RadioInput
+                            prefName="salmon"
+                            setting="color"
+                            value="hsl(0, 91%, 71%)"
+                            theme={theme}
+                            setTheme={setTheme}
+                        />
+                        <RadioInput
+                            prefName="blue"
+                            setting="color"
+                            value="hsl(182, 91%, 71%)"
+                            theme={theme}
+                            setTheme={setTheme}
+                        />
+                        <RadioInput
+                            prefName="purple"
+                            setting="color"
+                            value="hsl(284, 89%, 74%)"
+                            theme={theme}
+                            setTheme={setTheme}
+                        />
+                    </RadioInputWrapper>
+				</Fieldset>
 				<Button variant="modal" type="submit">
 					Apply
 				</Button>
@@ -137,7 +143,32 @@ const Header = styled.div`
 `;
 
 const StyledForm = styled.form`
-	padding: 24px;
+	padding: 0 24px;
+`;
+
+const Fieldset = styled.fieldset`
+    border: none;
+    padding: 24px 0;
+
+    &:not(:last-of-type) {
+        border-bottom: 1px solid var(--color-grey-border);
+    }
+`;
+
+const SettingHeading = styled.h3`
+    margin-bottom: 18px;
+    text-align: center;
+`;
+
+const NumberInputWrapper = styled.div`
+    display: grid;
+    gap: 8px;
+`;
+
+const RadioInputWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 16px;
 `;
 
 export default Form;

@@ -54,6 +54,8 @@ const ModalOverlay = styled(DialogOverlay)`
 const ModalContent = styled(DialogContent)`
 	border-radius: 15px;
 	padding: 0;
+    width: 87%;
+    max-width: 540px;
 `;
 
 export default Modal;

@@ -25,7 +25,7 @@ function RadioInput({ theme, setTheme, prefName, setting, value }) {
 
 	return (
 		<Component>
-			<input
+			<Input
 				type="radio"
 				id={prefName}
 				name={setting}
@@ -33,7 +33,7 @@ function RadioInput({ theme, setTheme, prefName, setting, value }) {
 				defaultChecked={checked}
 				onChange={handleChange}
 			/>
-			<label htmlFor={prefName}>{prefName}</label>
+			<Label htmlFor={prefName} value={value}>{prefName}</Label>
 		</Component>
 	);
 }
@@ -43,5 +43,51 @@ const BaseRadioInput = styled.div``;
 const FontRadioInput = styled(BaseRadioInput)``;
 
 const ColorRadioInput = styled(BaseRadioInput)``;
+
+const Input = styled.input`
+    //opacity: 0;
+`;
+
+const Label = styled.label`
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+
+    // Custom radio button
+	&::before {
+		content: '';
+		position: absolute;
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: var(--color-grey);
+
+        ${Input}:checked + & {
+            background-color: var(--color-dark-navy);
+        }
+
+        ${Input}:focus + & {
+            outline: 2px dotted var(--color-modal-outline);
+            outline-offset: 2px;
+        }
+	}
+
+    // Content inside custom radio button
+    &::after {
+        content: 'Aa';
+        font-family: ${p => p.value};
+        font-size: 0.9375rem;
+        color: var(--color-navy-opaque);
+        position: absolute;
+        display: inline-block;
+        top: 8px;
+        left: 10px;
+
+        ${Input}:checked ~ & {
+            color: white;
+        }
+    }
+`;
 
 export default RadioInput;

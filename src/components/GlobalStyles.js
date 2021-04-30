@@ -74,9 +74,11 @@ const GlobalStyles = createGlobalStyle`
         --color-purple: hsl(284, 89%, 74%);
         --color-grey-blue-opaque: hsl(226, 100%, 92%, .4);
         --color-grey-blue: hsl(226, 99%, 92%);
+        --color-navy-opaque: hsl(235, 35%, 18%, .73);
         --color-navy: hsl(236, 36%, 18%);
         --color-dark-navy: hsl(234, 39%, 14%);
         --color-modal-overlay: hsl(234, 47%, 8%, .5);
+        --color-modal-outline: hsl(220, 98%, 61%);
         --linear-gradient: linear-gradient(to bottom right, hsl(235, 49%, 11%), hsl(234, 33%, 27%));
         --box-shadow: -50px -50px 100px hsl(234, 40%, 25%), 50px 50px 100px hsl(234, 45%, 13%);
         --color-white: hsl(0, 0%, 100%);
@@ -93,7 +95,7 @@ const GlobalStyles = createGlobalStyle`
         --font-size-h3: 0.6875rem;
         --font-size-h4: 0.875rem;
         --font-size-label: 0.75rem;
-        --font-size-select: 0.875rem;
+        --font-size-num-input: 0.875rem;
         --font-size-apply: 1rem;
 
         @media (min-width: 600px) {
