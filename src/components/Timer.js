@@ -136,6 +136,19 @@ const TimerDisplay = styled.button`
 		width: 366px;
         padding: 13.5px;
 	}
+
+    &:focus {
+        outline: none;
+
+        h4 {
+            outline: 2px dotted var(--color-grey-blue);
+            outline-offset: 2px;
+        }
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
 `;
 
 export default Timer;
