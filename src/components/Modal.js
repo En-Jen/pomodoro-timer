@@ -3,6 +3,7 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import styled from 'styled-components/macro';
 
+import VisuallyHidden from './VisuallyHidden';
 import Button from './Button';
 import Form from './Form';
 
@@ -25,6 +26,7 @@ function Modal({
 						opacity=".5"
 					/>
 				</svg>
+                <VisuallyHidden>open settings pane</VisuallyHidden>
 			</Button>
 			<ModalOverlay
 				isOpen={showDialog}
@@ -52,6 +54,7 @@ const ModalOverlay = styled(DialogOverlay)`
 `;
 
 const ModalContent = styled(DialogContent)`
+    position: relative;
 	border-radius: 15px;
 	padding: 0;
     width: 87%;

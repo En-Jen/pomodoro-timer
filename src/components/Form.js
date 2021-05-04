@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+import VisuallyHidden from './VisuallyHidden';
 import Button from './Button';
 import NumberInput from './NumberInput';
 import RadioInput from './RadioInput';
@@ -35,11 +36,12 @@ function Form({
 							opacity=".5"
 						/>
 					</svg>
+                    <VisuallyHidden>Close settings pane</VisuallyHidden>
 				</Button>
 			</Header>
 			<StyledForm action="" onSubmit={handleSubmit}>
 				<Fieldset>
-					<SettingHeading>Time (minutes)</SettingHeading>
+					<TimeHeading>Time (minutes)</TimeHeading>
                     <NumberInputWrapper>
                         <NumberInput
                             type="pomodoro"
@@ -70,8 +72,8 @@ function Form({
                         />
                     </NumberInputWrapper>
 				</Fieldset>
-				<Fieldset>
-					<SettingHeading>Font</SettingHeading>
+				<RadioFieldset>
+					<RadioHeading>Font</RadioHeading>
                     <RadioInputWrapper>
                         <RadioInput
                             prefName="kumbh sans"
@@ -95,9 +97,9 @@ function Form({
                             setTheme={setTheme}
                         />
                     </RadioInputWrapper>
-				</Fieldset>
-				<Fieldset>
-					<SettingHeading>Color</SettingHeading>
+				</RadioFieldset>
+				<RadioFieldset>
+					<RadioHeading>Color</RadioHeading>
                     <RadioInputWrapper>
                         <RadioInput
                             prefName="salmon"
@@ -121,10 +123,12 @@ function Form({
                             setTheme={setTheme}
                         />
                     </RadioInputWrapper>
-				</Fieldset>
-				<Button variant="modal" type="submit">
-					Apply
-				</Button>
+				</RadioFieldset>
+                <ButtonWrapper>
+                    <Button variant="modal" type="submit">
+                        Apply
+                    </Button>
+                </ButtonWrapper>
 			</StyledForm>
 		</div>
 	);
@@ -138,12 +142,17 @@ const Header = styled.div`
 	border-bottom: 1px solid var(--color-grey-border);
 
 	@media (min-width: 600px) {
+        padding: 34px 40px;
 		padding-bottom: 31px;
 	}
 `;
 
 const StyledForm = styled.form`
 	padding: 0 24px;
+
+    @media (min-width: 600px) {
+		padding: 0 40px;
+	}
 `;
 
 const Fieldset = styled.fieldset`
@@ -153,16 +162,49 @@ const Fieldset = styled.fieldset`
     &:not(:last-of-type) {
         border-bottom: 1px solid var(--color-grey-border);
     }
+
+    &:last-of-type {
+        padding-bottom: 59px;
+    }
+`;
+
+const RadioFieldset = styled(Fieldset)`
+    @media (min-width: 600px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+	}
 `;
 
 const SettingHeading = styled.h3`
     margin-bottom: 18px;
     text-align: center;
+
+    @media (min-width: 600px) {
+        text-align: revert;
+	}
+`;
+
+const TimeHeading = styled(SettingHeading)`
+    @media (min-width: 600px) {
+        margin-bottom: 26px;
+	}
+`;
+
+const RadioHeading = styled(SettingHeading)`
+    @media (min-width: 600px) {
+        margin-bottom: 0;
+	}
 `;
 
 const NumberInputWrapper = styled.div`
     display: grid;
     gap: 8px;
+
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+	}
 `;
 
 const RadioInputWrapper = styled.div`
@@ -171,6 +213,13 @@ const RadioInputWrapper = styled.div`
     grid-template-rows: 40px;
     gap: 16px;
     justify-content: center;
+`;
+
+const ButtonWrapper = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
 `;
 
 export default Form;

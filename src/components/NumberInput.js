@@ -43,6 +43,11 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
+
+    @media (min-width: 600px) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+	}
 `;
 
 const Label = styled.label`

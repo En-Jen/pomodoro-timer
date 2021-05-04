@@ -111,6 +111,15 @@ const GlobalStyles = createGlobalStyle`
         background-color: var(--color-navy);
         font-family: ${p => p.theme.font};
         font-weight: 700;
+        padding: 32px 24px;
+
+        @media (min-width: 600px) {
+            padding: 80px;
+        }
+
+        @media (min-width: 1024px) {
+            padding: 48px;
+        }
     }
 
     h2 {
