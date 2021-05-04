@@ -38,8 +38,27 @@ function Controls({
 		}
 	}, [timerMode, timerLength, setSecondsLeft]);
 
+    // Set left position for ActiveBtnBackground
+	let mobileLeft, tabletLeft;
+	if (timerMode === 'pomodoro') {
+		mobileLeft = 6 + 'px';
+		tabletLeft = 7 + 'px';
+	} else if (timerMode === 'short break') {
+		mobileLeft = 111 + 'px';
+		tabletLeft = 127 + 'px';
+	} else if (timerMode === 'long break') {
+		mobileLeft = 216 + 'px';
+		tabletLeft = 247 + 'px';
+	}
+
 	return (
 		<Wrapper>
+			<ActiveBtnBackground
+				style={{
+					'--mobile-left': mobileLeft,
+					'--tablet-left': tabletLeft,
+				}}
+			/>
 			<Button
 				onClick={handleClick}
 				variant="controls"
@@ -66,6 +85,7 @@ function Controls({
 }
 
 const Wrapper = styled.div`
+	position: relative;
 	background-color: var(--color-dark-navy);
 	padding: 5px 6px;
 	border-radius: 31.5px;
@@ -78,6 +98,27 @@ const Wrapper = styled.div`
 
 	@media (min-width: 600px) {
 		padding: 8px 7px;
+	}
+`;
+
+const ActiveBtnBackground = styled.div`
+    display: none;
+	position: absolute;
+	left: var(--mobile-left);
+	border-radius: 26.5px;
+	background-color: ${p => p.theme.color};
+	width: 105px;
+	height: 48px;
+	z-index: 1;
+	transition: left 0.3s ease-in;
+
+    @media (min-width: 375px) {
+        display: revert;
+    }
+
+	@media (min-width: 600px) {
+		width: 120px;
+		left: var(--tablet-left);
 	}
 `;
 
