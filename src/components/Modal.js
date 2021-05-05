@@ -2,23 +2,25 @@ import React from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import styled from 'styled-components/macro';
+import useSound from 'use-sound';
 
+import settingsSfx from '../sounds/settingsBtn.mp3';
 import VisuallyHidden from './VisuallyHidden';
 import Button from './Button';
 import Form from './Form';
 
-function Modal({
-    timerLength,
-    setTimerLength,
-    theme,
-    setTheme,
-    setIsTimerOn,
-}) {
+function Modal({ timerLength, setTimerLength, theme, setTheme, setIsTimerOn }) {
 	const [showDialog, setShowDialog] = React.useState(false);
+	const [settings] = useSound(settingsSfx);
+
+	const handleClick = () => {
+		setShowDialog(true);
+		settings();
+	};
 
 	return (
 		<div>
-			<Button onClick={() => setShowDialog(true)}>
+			<Button onClick={handleClick}>
 				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28">
 					<path
 						fill="#D7E0FF"
@@ -26,7 +28,7 @@ function Modal({
 						opacity=".5"
 					/>
 				</svg>
-                <VisuallyHidden>open settings pane</VisuallyHidden>
+				<VisuallyHidden>open settings pane</VisuallyHidden>
 			</Button>
 			<ModalOverlay
 				isOpen={showDialog}
@@ -35,11 +37,11 @@ function Modal({
 				<ModalContent aria-label="settings pane">
 					<Form
 						setShowDialog={setShowDialog}
-                        timerLength={timerLength}
-                        setTimerLength={setTimerLength}
-                        theme={theme}
-                        setTheme={setTheme}
-                        setIsTimerOn={setIsTimerOn}
+						timerLength={timerLength}
+						setTimerLength={setTimerLength}
+						theme={theme}
+						setTheme={setTheme}
+						setIsTimerOn={setIsTimerOn}
 					/>
 				</ModalContent>
 			</ModalOverlay>
@@ -54,11 +56,11 @@ const ModalOverlay = styled(DialogOverlay)`
 `;
 
 const ModalContent = styled(DialogContent)`
-    position: relative;
+	position: relative;
 	border-radius: 15px;
 	padding: 0;
-    width: 87%;
-    max-width: 540px;
+	width: 87%;
+	max-width: 540px;
 `;
 
 export default Modal;

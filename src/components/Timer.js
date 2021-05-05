@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
-import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import useSound from 'use-sound';
+import {
+	CircularProgressbarWithChildren,
+	buildStyles,
+} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+
+import timesUpSfx from '../sounds/timesUp.mp3';
+import startSfx from '../sounds/start.mp3';
+import pauseSfx from '../sounds/pause.mp3';
 
 function Timer({
 	secondsLeft,
@@ -12,8 +20,12 @@ function Timer({
 	timerLength,
 	timerText,
 	setTimerText,
-    theme
+	theme,
 }) {
+	const [timesUp] = useSound(timesUpSfx);
+	const [start] = useSound(startSfx);
+	const [pause] = useSound(pauseSfx);
+
 	useEffect(() => {
 		if (isTimerOn) {
 			var tick = setInterval(() => {
@@ -22,13 +34,21 @@ function Timer({
 		}
 
 		if (secondsLeft === 0) {
+			timesUp();
 			setIsTimerOn(false);
 			setTimerText('restart');
 			clearInterval(tick);
 		}
 
 		return () => clearInterval(tick);
-	}, [isTimerOn, secondsLeft, setSecondsLeft, setIsTimerOn, setTimerText]);
+	}, [
+		isTimerOn,
+		secondsLeft,
+		setSecondsLeft,
+		setIsTimerOn,
+		setTimerText,
+		timesUp,
+	]);
 
 	const resetSecondsLeft = () => {
 		if (timerMode === 'pomodoro') {
@@ -48,8 +68,10 @@ function Timer({
 			timerText === 'resume' ||
 			timerText === 'restart'
 		) {
+			start();
 			setTimerText('pause');
 		} else if (timerText === 'pause') {
+			pause();
 			setTimerText('resume');
 		}
 
@@ -71,17 +93,17 @@ function Timer({
 		return `${mins}:${secs}`;
 	};
 
-    const getProgBarMaxVal = () => {
-        let maxVal;
-        if (timerMode === 'pomodoro') {
-            maxVal = timerLength.pomo * 60;
+	const getProgBarMaxVal = () => {
+		let maxVal;
+		if (timerMode === 'pomodoro') {
+			maxVal = timerLength.pomo * 60;
 		} else if (timerMode === 'short break') {
-            maxVal = timerLength.short * 60
+			maxVal = timerLength.short * 60;
 		} else if (timerMode === 'long break') {
-            maxVal = timerLength.long * 60;
+			maxVal = timerLength.long * 60;
 		}
-        return maxVal;
-    }
+		return maxVal;
+	};
 
 	return (
 		<Wrapper>
@@ -89,12 +111,12 @@ function Timer({
 				<CircularProgressbarWithChildren
 					value={secondsLeft}
 					maxValue={getProgBarMaxVal()}
-                    strokeWidth={3}
-                    styles={buildStyles({
-                        pathTransitionDuration: .8,
-                        pathColor: theme.color,
-                        trailColor: 'transparent',
-                      })}
+					strokeWidth={3}
+					styles={buildStyles({
+						pathTransitionDuration: 0.8,
+						pathColor: theme.color,
+						trailColor: 'transparent',
+					})}
 				>
 					{formatTimeLeft(secondsLeft)}
 					<h4>{timerText}</h4>
@@ -125,7 +147,7 @@ const TimerDisplay = styled.button`
 	height: 267.8px;
 	width: 267.8px;
 	border-radius: 50%;
-    padding: 8px;
+	padding: 8px;
 	background-color: var(--color-dark-navy);
 	color: var(--color-grey-blue);
 	font-size: var(--font-size-timer);
@@ -134,21 +156,21 @@ const TimerDisplay = styled.button`
 	@media (min-width: 600px) {
 		height: 366px;
 		width: 366px;
-        padding: 13.5px;
+		padding: 13.5px;
 	}
 
-    &:focus {
-        outline: none;
+	&:focus {
+		outline: none;
 
-        h4 {
-            outline: 2px dotted var(--color-grey-blue);
-            outline-offset: 2px;
-        }
-    }
+		h4 {
+			outline: 2px dotted var(--color-grey-blue);
+			outline-offset: 2px;
+		}
+	}
 
-    &:active {
-        transform: scale(0.98);
-    }
+	&:active {
+		transform: scale(0.98);
+	}
 `;
 
 export default Timer;

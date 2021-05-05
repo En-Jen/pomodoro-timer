@@ -32,42 +32,47 @@ const UnstyledBtn = styled(BaseBtn)`
 `;
 
 const ControlsBtn = styled(BaseBtn)`
-    position: relative;
+	position: relative;
 	border-radius: 26.5px;
-    background-color: ${p => p.active ? p.theme.color : 'transparent'};
-    width: 105px;
+	background-color: ${p => (p.active ? p.theme.color : 'transparent')};
+	width: 105px;
 	height: 48px;
-	color: ${p => (p.active ? 'var(--color-navy)' : 'var(--color-grey-blue-opaque)')};
-    font-size: var(--font-size-controls);
-    z-index: 2;
-    transition: color .4s ease;
+	color: ${p =>
+		p.active ? 'var(--color-navy)' : 'var(--color-grey-blue-opaque)'};
+	font-size: var(--font-size-controls);
+	z-index: 2;
+	transition: color 0.4s ease;
 
-    @media (min-width: 375px) {
-        background-color: transparent;
-    }
+	@media (min-width: 375px) {
+		background-color: transparent;
+	}
 
-    @media (min-width: 600px) {
-        width: 120px;
-    }
+	@media (min-width: 600px) {
+		width: 120px;
+	}
+
+	&:hover {
+		color: var(--color-white);
+	}
 `;
 
 const ModalBtn = styled(BaseBtn)`
 	border-radius: 26.5px;
-    background-color: ${p => p.theme.color};
-    font-size: var(--font-size-apply);
-    color: var(--color-white);
-    width: 140px;
-    height: 53px;
-    transition: transform .3s ease;
+	background-color: ${p => p.theme.color};
+	font-size: var(--font-size-apply);
+	color: var(--color-white);
+	width: 140px;
+	height: 53px;
+	transition: transform 0.3s ease;
 
-    &:focus {
-        outline: 2px dotted var(--color-modal-outline);
-        outline-offset: 2px;
-    }
+	&:focus {
+		outline: 2px dotted var(--color-modal-outline);
+		outline-offset: 2px;
+	}
 
-    &:hover {
-        transform: scale(1.1);
-    }
+	&:hover {
+		transform: scale(1.1);
+	}
 `;
 
 export default Button;

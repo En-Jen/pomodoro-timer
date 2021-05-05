@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
+import useSound from 'use-sound';
 
+import switchSfx from '../sounds/switch.mp3';
 import Button from './Button';
 
 function Controls({
@@ -11,14 +13,17 @@ function Controls({
 	setTimerMode,
 	setTimerText,
 }) {
+	const [switchControl] = useSound(switchSfx);
+
 	// TODO: reuse resetSecondsLeft function used below (found in Timer.js)
 	// to make more DRY
 	const handleClick = e => {
+		switchControl();
 		setTimerMode(e.target.innerHTML);
 		setIsTimerOn(false);
 		setTimerText('start');
 
-		// Reset seconndsLeft
+		// Reset secondsLeft
 		if (timerMode === 'pomodoro') {
 			setSecondsLeft(timerLength.pomo * 60);
 		} else if (timerMode === 'short break') {
@@ -38,7 +43,7 @@ function Controls({
 		}
 	}, [timerMode, timerLength, setSecondsLeft]);
 
-    // Set left position for ActiveBtnBackground
+	// Set left position for ActiveBtnBackground
 	let mobileLeft, tabletLeft;
 	if (timerMode === 'pomodoro') {
 		mobileLeft = 6 + 'px';
@@ -102,7 +107,7 @@ const Wrapper = styled.div`
 `;
 
 const ActiveBtnBackground = styled.div`
-    display: none;
+	display: none;
 	position: absolute;
 	left: var(--mobile-left);
 	border-radius: 26.5px;
@@ -110,11 +115,11 @@ const ActiveBtnBackground = styled.div`
 	width: 105px;
 	height: 48px;
 	z-index: 1;
-	transition: left 0.3s ease-in;
+	transition: left 0.2s ease-in;
 
-    @media (min-width: 375px) {
-        display: revert;
-    }
+	@media (min-width: 375px) {
+		display: revert;
+	}
 
 	@media (min-width: 600px) {
 		width: 120px;

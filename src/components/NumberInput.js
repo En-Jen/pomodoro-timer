@@ -26,34 +26,34 @@ function NumberInput({
 	return (
 		<Wrapper>
 			<Label htmlFor={type}>{type}</Label>
-            <Input
-                type="number"
-                name={type}
-                id={type}
-                min={min}
-                max={max}
-                value={value}
-                onChange={handleChange}
-            />
+			<Input
+				type="number"
+				name={type}
+				id={type}
+				min={min}
+				max={max}
+				value={value}
+				onChange={handleChange}
+			/>
 		</Wrapper>
 	);
 }
 
 const Wrapper = styled.div`
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
 
-    @media (min-width: 600px) {
-        grid-template-columns: 1fr;
-        gap: 10px;
+	@media (min-width: 600px) {
+		grid-template-columns: 1fr;
+		gap: 10px;
 	}
 `;
 
 const Label = styled.label`
-    color: var(--color-navy);
-    opacity: 40%;
-    font-size: var(--font-size-label);
+	color: var(--color-navy);
+	opacity: 40%;
+	font-size: var(--font-size-label);
 `;
 
 const Input = styled.input`
@@ -66,10 +66,10 @@ const Input = styled.input`
 	color: var(--color-navy);
 	font-size: var(--font-size-num-input);
 
-    &:focus {
-        outline: 2px dotted var(--color-modal-outline);
-        outline-offset: 2px;
-    }
+	&:focus {
+		outline: 2px dotted var(--color-modal-outline);
+		outline-offset: 2px;
+	}
 
 	&::-webkit-outer-spin-button,
 	&::-webkit-inner-spin-button {
@@ -79,7 +79,7 @@ const Input = styled.input`
 		cursor: pointer;
 	}
 
-    &::-webkit-outer-spin-button:hover,
+	&::-webkit-outer-spin-button:hover,
 	&::-webkit-inner-spin-button:hover {
 		opacity: 1;
 	}

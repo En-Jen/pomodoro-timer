@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import useSound from 'use-sound';
 
+import switchSfx from '../sounds/switch.mp3';
 import CheckIcon from './CheckIcon';
 import VisuallyHidden from './VisuallyHidden';
 
 function RadioInput({ theme, setTheme, prefName, setting, value }) {
+    const [switchSetting] = useSound(switchSfx);
+
 	const handleChange = e => {
+        switchSetting();
 		if (e.target.name === 'font') {
 			setTheme({ ...theme, font: e.target.value });
 		}
