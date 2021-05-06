@@ -13,6 +13,7 @@ function Form({
     theme,
     setTheme,
 	setIsTimerOn,
+    soundEnabled
 }) {
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -81,6 +82,7 @@ function Form({
                             value="'Kumbh Sans', sans-serif"
                             theme={theme}
                             setTheme={setTheme}
+                            soundEnabled={soundEnabled}
                         />
                         <RadioInput
                             prefName="roboto slab"
@@ -88,6 +90,7 @@ function Form({
                             value="'Roboto Slab', serif"
                             theme={theme}
                             setTheme={setTheme}
+                            soundEnabled={soundEnabled}
                         />
                         <RadioInput
                             prefName="space mono"
@@ -95,6 +98,7 @@ function Form({
                             value="'Space Mono', monospace"
                             theme={theme}
                             setTheme={setTheme}
+                            soundEnabled={soundEnabled}
                         />
                     </RadioInputWrapper>
 				</RadioFieldset>
@@ -107,6 +111,7 @@ function Form({
                             value="hsl(0, 91%, 71%)"
                             theme={theme}
                             setTheme={setTheme}
+                            soundEnabled={soundEnabled}
                         />
                         <RadioInput
                             prefName="blue"
@@ -114,6 +119,7 @@ function Form({
                             value="hsl(182, 91%, 71%)"
                             theme={theme}
                             setTheme={setTheme}
+                            soundEnabled={soundEnabled}
                         />
                         <RadioInput
                             prefName="purple"
@@ -121,6 +127,7 @@ function Form({
                             value="hsl(284, 89%, 74%)"
                             theme={theme}
                             setTheme={setTheme}
+                            soundEnabled={soundEnabled}
                         />
                     </RadioInputWrapper>
 				</RadioFieldset>

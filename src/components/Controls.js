@@ -12,8 +12,9 @@ function Controls({
 	timerMode,
 	setTimerMode,
 	setTimerText,
+    soundEnabled
 }) {
-	const [switchControl] = useSound(switchSfx);
+	const [switchControl] = useSound(switchSfx, { soundEnabled });
 
 	// TODO: reuse resetSecondsLeft function used below (found in Timer.js)
 	// to make more DRY

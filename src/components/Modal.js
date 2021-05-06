@@ -9,9 +9,16 @@ import VisuallyHidden from './VisuallyHidden';
 import Button from './Button';
 import Form from './Form';
 
-function Modal({ timerLength, setTimerLength, theme, setTheme, setIsTimerOn }) {
+function Modal({
+	timerLength,
+	setTimerLength,
+	theme,
+	setTheme,
+	setIsTimerOn,
+	soundEnabled,
+}) {
 	const [showDialog, setShowDialog] = React.useState(false);
-	const [settings] = useSound(settingsSfx);
+	const [settings] = useSound(settingsSfx, { soundEnabled });
 
 	const handleClick = () => {
 		setShowDialog(true);
@@ -42,6 +49,7 @@ function Modal({ timerLength, setTimerLength, theme, setTheme, setIsTimerOn }) {
 						theme={theme}
 						setTheme={setTheme}
 						setIsTimerOn={setIsTimerOn}
+                        soundEnabled={soundEnabled}
 					/>
 				</ModalContent>
 			</ModalOverlay>

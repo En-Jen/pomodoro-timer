@@ -21,10 +21,11 @@ function Timer({
 	timerText,
 	setTimerText,
 	theme,
+    soundEnabled
 }) {
-	const [timesUp] = useSound(timesUpSfx);
-	const [start] = useSound(startSfx);
-	const [pause] = useSound(pauseSfx);
+	const [timesUp] = useSound(timesUpSfx, { soundEnabled });
+	const [start] = useSound(startSfx, { soundEnabled });
+	const [pause] = useSound(pauseSfx, { soundEnabled });
 
 	useEffect(() => {
 		if (isTimerOn) {
