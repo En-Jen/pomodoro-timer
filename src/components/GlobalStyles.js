@@ -86,9 +86,6 @@ const GlobalStyles = createGlobalStyle`
         --color-grey-border: hsl(0, 2%, 89%);
 
         /* Fonts */
-        --font-kumbh: 'Kumbh Sans', sans-serif;
-        --font-roboto: 'Roboto Slab', serif;
-        --font-space: 'Space Mono', monospace;
         --font-size-timer: 5rem;
         --font-size-controls: 0.75rem;
         --font-size-h2: 1.25rem;
