@@ -8,6 +8,7 @@ import Controls from './components/Controls';
 import Timer from './components/Timer';
 import Spacer from './components/Spacer';
 import Modal from './components/Modal';
+import Attribution from './components/Attribution';
 
 function App() {
 	const [timerLength, setTimerLength] = useState({
@@ -66,6 +67,8 @@ function App() {
 					setIsTimerOn={setIsTimerOn}
           soundEnabled={soundEnabled}
 				/>
+        {/* <Spacer size={45} mobileLargeAndUp={109} desktopAndUp={45} /> */}
+        <Attribution />
 			</ThemeProvider>
 		</Wrapper>
 	);

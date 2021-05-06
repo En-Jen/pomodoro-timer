@@ -108,7 +108,7 @@ function Timer({
 
 	return (
 		<Wrapper>
-			<TimerDisplay onClick={handleClick}>
+			<TimerDisplay onClick={handleClick} aria-label="timer">
 				<CircularProgressbarWithChildren
 					value={secondsLeft}
 					maxValue={getProgBarMaxVal()}

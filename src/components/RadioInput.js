@@ -4,7 +4,6 @@ import useSound from 'use-sound';
 
 import switchSfx from '../sounds/switch.mp3';
 import CheckIcon from './CheckIcon';
-import VisuallyHidden from './VisuallyHidden';
 
 function RadioInput({
 	theme,
@@ -49,10 +48,9 @@ function RadioInput({
 				defaultChecked={checked}
 				onChange={handleChange}
 			/>
-			<Label htmlFor={prefName} value={value}>
+			<Label htmlFor={prefName} value={value} aria-label={prefName}>
 				{LabelContent}
 			</Label>
-			<VisuallyHidden>{prefName}</VisuallyHidden>
 		</div>
 	);
 }

@@ -31,11 +31,10 @@ const BaseBtn = styled.button`
 
 const UnstyledBtn = styled(BaseBtn)`
 	background: transparent;
+    padding: 6px;
 `;
 
 const SettingsBtn = styled(UnstyledBtn)`
-    padding: 6px;
-
 	&:hover svg {
 		transform: scale(1.25) rotate(45deg);
 	}
