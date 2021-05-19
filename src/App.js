@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components/macro';
 
+import { selectTheme } from './features/theme/themeSlice';
 import GlobalStyles from './components/GlobalStyles';
 import Logo from './components/Logo';
 import ToggleSound from './components/ToggleSound';
@@ -20,10 +22,8 @@ function App() {
 	const [timerMode, setTimerMode] = useState('pomodoro');
 	const [timerText, setTimerText] = useState('start');
 	const [secondsLeft, setSecondsLeft] = useState(timerLength.pomo * 60);
-	const [theme, setTheme] = useState({
-		font: "'Kumbh Sans', sans-serif",
-		color: 'hsl(0, 91%, 71%)',
-	});
+
+	const theme = useSelector(selectTheme);
 
 	return (
 		<Wrapper>
@@ -50,14 +50,11 @@ function App() {
 					timerMode={timerMode}
 					timerText={timerText}
 					setTimerText={setTimerText}
-					theme={theme}
 				/>
 				<Spacer size={79} mobileLargeAndUp={144} desktopAndUp={63} />
 				<Modal
 					timerLength={timerLength}
 					setTimerLength={setTimerLength}
-					theme={theme}
-					setTheme={setTheme}
 					setIsTimerOn={setIsTimerOn}
 				/>
 				<Attribution />

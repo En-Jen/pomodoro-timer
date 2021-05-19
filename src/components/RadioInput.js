@@ -1,23 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 import useSound from 'use-sound';
 
+import { selectTheme, setFont, setColor } from '../features/theme/themeSlice';
 import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
 import switchSfx from '../sounds/switch.mp3';
 import CheckIcon from './CheckIcon';
 
-function RadioInput({ theme, setTheme, prefName, setting, value }) {
+function RadioInput({ prefName, setting, value }) {
+	const theme = useSelector(selectTheme);
 	const soundEnabled = useSelector(selectSoundEnabled);
+	const dispatch = useDispatch();
 	const [switchSetting] = useSound(switchSfx, { soundEnabled });
 
 	const handleChange = e => {
 		switchSetting();
 		if (e.target.name === 'font') {
-			setTheme({ ...theme, font: e.target.value });
+			// setTheme({ ...theme, font: e.target.value });
+			dispatch(setFont(e.target.value));
 		}
 		if (e.target.name === 'color') {
-			setTheme({ ...theme, color: e.target.value });
+			// setTheme({ ...theme, color: e.target.value });
+			dispatch(setColor(e.target.value));
 		}
 	};
 

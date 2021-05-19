@@ -14,8 +14,6 @@ import Form from './Form';
 function Modal({
 	timerLength,
 	setTimerLength,
-	theme,
-	setTheme,
 	setIsTimerOn
 }) {
 	const soundEnabled = useSelector(selectSoundEnabled);
@@ -49,8 +47,6 @@ function Modal({
 						setShowDialog={setShowDialog}
 						timerLength={timerLength}
 						setTimerLength={setTimerLength}
-						theme={theme}
-						setTheme={setTheme}
 						setIsTimerOn={setIsTimerOn}
 					/>
 				</ModalContent>

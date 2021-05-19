@@ -10,8 +10,6 @@ function Form({
 	setShowDialog,
 	timerLength,
 	setTimerLength,
-	theme,
-	setTheme,
 	setIsTimerOn,
 }) {
 	const handleSubmit = e => {
@@ -79,22 +77,16 @@ function Form({
 							prefName="kumbh sans"
 							setting="font"
 							value="'Kumbh Sans', sans-serif"
-							theme={theme}
-							setTheme={setTheme}
 						/>
 						<RadioInput
 							prefName="roboto slab"
 							setting="font"
 							value="'Roboto Slab', serif"
-							theme={theme}
-							setTheme={setTheme}
 						/>
 						<RadioInput
 							prefName="space mono"
 							setting="font"
 							value="'Space Mono', monospace"
-							theme={theme}
-							setTheme={setTheme}
 						/>
 					</RadioInputWrapper>
 				</RadioFieldset>
@@ -105,22 +97,16 @@ function Form({
 							prefName="salmon"
 							setting="color"
 							value="hsl(0, 91%, 71%)"
-							theme={theme}
-							setTheme={setTheme}
 						/>
 						<RadioInput
 							prefName="blue"
 							setting="color"
 							value="hsl(182, 91%, 71%)"
-							theme={theme}
-							setTheme={setTheme}
 						/>
 						<RadioInput
 							prefName="purple"
 							setting="color"
 							value="hsl(284, 89%, 74%)"
-							theme={theme}
-							setTheme={setTheme}
 						/>
 					</RadioInputWrapper>
 				</RadioFieldset>

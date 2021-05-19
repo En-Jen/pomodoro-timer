@@ -8,6 +8,7 @@ import {
 } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
+import { selectTheme } from '../features/theme/themeSlice';
 import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
 import timesUpSfx from '../sounds/timesUp.mp3';
 import startSfx from '../sounds/start.mp3';
@@ -21,9 +22,9 @@ function Timer({
 	timerMode,
 	timerLength,
 	timerText,
-	setTimerText,
-	theme,
+	setTimerText
 }) {
+	const theme = useSelector(selectTheme);
 	const soundEnabled = useSelector(selectSoundEnabled);
 	const [timesUp] = useSound(timesUpSfx, { soundEnabled });
 	const [start] = useSound(startSfx, { soundEnabled });
