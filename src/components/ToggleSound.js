@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import useSound from 'use-sound';
 
+import { toggleSound, selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
 import volumeMuteSfx from '../sounds/volumeMute.mp3';
 import volumeOnSfx from '../sounds/volumeOn.mp3';
 import Button from './Button';
@@ -9,12 +11,14 @@ import VolumeOnIcon from './VolumeOnIcon';
 import VolumeOffIcon from './VolumeOffIcon';
 import VisuallyHidden from './VisuallyHidden';
 
-function ToggleSound({ soundEnabled, setSoundEnabled }) {
+function ToggleSound() {
+    const soundEnabled = useSelector(selectSoundEnabled);
+    const dispatch = useDispatch();
 	const [volumeOn] = useSound(volumeOnSfx);
 	const [volumeMute] = useSound(volumeMuteSfx);
 
 	const handleClick = () => {
-		setSoundEnabled(prevState => !prevState);
+        dispatch(toggleSound());
 		soundEnabled ? volumeMute() : volumeOn();
 	};
 

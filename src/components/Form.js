@@ -8,12 +8,11 @@ import RadioInput from './RadioInput';
 
 function Form({
 	setShowDialog,
-    timerLength,
-    setTimerLength,
-    theme,
-    setTheme,
+	timerLength,
+	setTimerLength,
+	theme,
+	setTheme,
 	setIsTimerOn,
-    soundEnabled
 }) {
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -37,105 +36,99 @@ function Form({
 							opacity=".5"
 						/>
 					</svg>
-                    <VisuallyHidden>Close settings pane</VisuallyHidden>
+					<VisuallyHidden>Close settings pane</VisuallyHidden>
 				</Button>
 			</Header>
 			<StyledForm action="" onSubmit={handleSubmit}>
 				<Fieldset>
 					<TimeHeading>Time (minutes)</TimeHeading>
-                    <NumberInputWrapper>
-                        <NumberInput
-                            type="pomodoro"
-                            min="5"
-                            max="60"
-                            value={timerLength.pomo}
-                            setIsTimerOn={setIsTimerOn}
-                            timerLength={timerLength}
-                            setTimerLength={setTimerLength}
-                        />
-                        <NumberInput
-                            type="short break"
-                            min="1"
-                            max="20"
-                            value={timerLength.short}
-                            setIsTimerOn={setIsTimerOn}
-                            timerLength={timerLength}
-                            setTimerLength={setTimerLength}
-                        />
-                        <NumberInput
-                            type="long break"
-                            min="5"
-                            max="45"
-                            value={timerLength.long}
-                            setIsTimerOn={setIsTimerOn}
-                            timerLength={timerLength}
-                            setTimerLength={setTimerLength}
-                        />
-                    </NumberInputWrapper>
+					<NumberInputWrapper>
+						<NumberInput
+							type="pomodoro"
+							min="5"
+							max="60"
+							value={timerLength.pomo}
+							setIsTimerOn={setIsTimerOn}
+							timerLength={timerLength}
+							setTimerLength={setTimerLength}
+						/>
+						<NumberInput
+							type="short break"
+							min="1"
+							max="20"
+							value={timerLength.short}
+							setIsTimerOn={setIsTimerOn}
+							timerLength={timerLength}
+							setTimerLength={setTimerLength}
+						/>
+						<NumberInput
+							type="long break"
+							min="5"
+							max="45"
+							value={timerLength.long}
+							setIsTimerOn={setIsTimerOn}
+							timerLength={timerLength}
+							setTimerLength={setTimerLength}
+						/>
+					</NumberInputWrapper>
 				</Fieldset>
 				<RadioFieldset>
 					<RadioHeading>Font</RadioHeading>
-                    <RadioInputWrapper>
-                        <RadioInput
-                            prefName="kumbh sans"
-                            setting="font"
-                            value="'Kumbh Sans', sans-serif"
-                            theme={theme}
-                            setTheme={setTheme}
-                            soundEnabled={soundEnabled}
-                        />
-                        <RadioInput
-                            prefName="roboto slab"
-                            setting="font"
-                            value="'Roboto Slab', serif"
-                            theme={theme}
-                            setTheme={setTheme}
-                            soundEnabled={soundEnabled}
-                        />
-                        <RadioInput
-                            prefName="space mono"
-                            setting="font"
-                            value="'Space Mono', monospace"
-                            theme={theme}
-                            setTheme={setTheme}
-                            soundEnabled={soundEnabled}
-                        />
-                    </RadioInputWrapper>
+					<RadioInputWrapper>
+						<RadioInput
+							prefName="kumbh sans"
+							setting="font"
+							value="'Kumbh Sans', sans-serif"
+							theme={theme}
+							setTheme={setTheme}
+						/>
+						<RadioInput
+							prefName="roboto slab"
+							setting="font"
+							value="'Roboto Slab', serif"
+							theme={theme}
+							setTheme={setTheme}
+						/>
+						<RadioInput
+							prefName="space mono"
+							setting="font"
+							value="'Space Mono', monospace"
+							theme={theme}
+							setTheme={setTheme}
+						/>
+					</RadioInputWrapper>
 				</RadioFieldset>
 				<RadioFieldset>
 					<RadioHeading>Color</RadioHeading>
-                    <RadioInputWrapper>
-                        <RadioInput
-                            prefName="salmon"
-                            setting="color"
-                            value="hsl(0, 91%, 71%)"
-                            theme={theme}
-                            setTheme={setTheme}
-                            soundEnabled={soundEnabled}
-                        />
-                        <RadioInput
-                            prefName="blue"
-                            setting="color"
-                            value="hsl(182, 91%, 71%)"
-                            theme={theme}
-                            setTheme={setTheme}
-                            soundEnabled={soundEnabled}
-                        />
-                        <RadioInput
-                            prefName="purple"
-                            setting="color"
-                            value="hsl(284, 89%, 74%)"
-                            theme={theme}
-                            setTheme={setTheme}
-                            soundEnabled={soundEnabled}
-                        />
-                    </RadioInputWrapper>
+					<RadioInputWrapper>
+						<RadioInput
+							prefName="salmon"
+							setting="color"
+							value="hsl(0, 91%, 71%)"
+							theme={theme}
+							setTheme={setTheme}
+						/>
+						<RadioInput
+							prefName="blue"
+							setting="color"
+							value="hsl(182, 91%, 71%)"
+							theme={theme}
+							setTheme={setTheme}
+						/>
+						<RadioInput
+							prefName="purple"
+							setting="color"
+							value="hsl(284, 89%, 74%)"
+							theme={theme}
+							setTheme={setTheme}
+						/>
+					</RadioInputWrapper>
 				</RadioFieldset>
-                <ButtonWrapper>
-                    <Button variant="modal" type="submit">
-                        Apply
-                    </Button>
-                </ButtonWrapper>
+				<ButtonWrapper>
+					<Button variant="modal" type="submit">
+						Apply
+					</Button>
+				</ButtonWrapper>
 			</StyledForm>
 		</div>
 	);
@@ -149,7 +142,7 @@ const Header = styled.div`
 	border-bottom: 1px solid var(--color-grey-border);
 
 	@media (min-width: 600px) {
-        padding: 34px 40px;
+		padding: 34px 40px;
 		padding-bottom: 31px;
 	}
 `;
@@ -157,76 +150,76 @@ const Header = styled.div`
 const StyledForm = styled.form`
 	padding: 0 24px;
 
-    @media (min-width: 600px) {
+	@media (min-width: 600px) {
 		padding: 0 40px;
 	}
 `;
 
 const Fieldset = styled.fieldset`
-    border: none;
-    padding: 24px 0;
+	border: none;
+	padding: 24px 0;
 
-    &:not(:last-of-type) {
-        border-bottom: 1px solid var(--color-grey-border);
-    }
+	&:not(:last-of-type) {
+		border-bottom: 1px solid var(--color-grey-border);
+	}
 
-    &:last-of-type {
-        padding-bottom: 59px;
-    }
+	&:last-of-type {
+		padding-bottom: 59px;
+	}
 `;
 
 const RadioFieldset = styled(Fieldset)`
-    @media (min-width: 600px) {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+	@media (min-width: 600px) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 `;
 
 const SettingHeading = styled.h3`
-    margin-bottom: 18px;
-    text-align: center;
+	margin-bottom: 18px;
+	text-align: center;
 
-    @media (min-width: 600px) {
-        text-align: revert;
+	@media (min-width: 600px) {
+		text-align: revert;
 	}
 `;
 
 const TimeHeading = styled(SettingHeading)`
-    @media (min-width: 600px) {
-        margin-bottom: 26px;
+	@media (min-width: 600px) {
+		margin-bottom: 26px;
 	}
 `;
 
 const RadioHeading = styled(SettingHeading)`
-    @media (min-width: 600px) {
-        margin-bottom: 0;
+	@media (min-width: 600px) {
+		margin-bottom: 0;
 	}
 `;
 
 const NumberInputWrapper = styled.div`
-    display: grid;
-    gap: 8px;
+	display: grid;
+	gap: 8px;
 
-    @media (min-width: 600px) {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+	@media (min-width: 600px) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
 	}
 `;
 
 const RadioInputWrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 40px);
-    grid-template-rows: 40px;
-    gap: 16px;
-    justify-content: center;
+	display: grid;
+	grid-template-columns: repeat(3, 40px);
+	grid-template-rows: 40px;
+	gap: 16px;
+	justify-content: center;
 `;
 
 const ButtonWrapper = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 50%);
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, 50%);
 `;
 
 export default Form;

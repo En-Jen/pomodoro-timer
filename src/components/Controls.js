@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 import useSound from 'use-sound';
 
+import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
 import switchSfx from '../sounds/switch.mp3';
 import Button from './Button';
 
@@ -12,8 +14,8 @@ function Controls({
 	timerMode,
 	setTimerMode,
 	setTimerText,
-    soundEnabled
 }) {
+	const soundEnabled = useSelector(selectSoundEnabled);
 	const [switchControl] = useSound(switchSfx, { soundEnabled });
 
 	// TODO: reuse resetSecondsLeft function used below (found in Timer.js)

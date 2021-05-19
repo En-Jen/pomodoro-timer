@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 import useSound from 'use-sound';
 import {
@@ -7,6 +8,7 @@ import {
 } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
+import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
 import timesUpSfx from '../sounds/timesUp.mp3';
 import startSfx from '../sounds/start.mp3';
 import pauseSfx from '../sounds/pause.mp3';
@@ -21,8 +23,8 @@ function Timer({
 	timerText,
 	setTimerText,
 	theme,
-    soundEnabled
 }) {
+	const soundEnabled = useSelector(selectSoundEnabled);
 	const [timesUp] = useSound(timesUpSfx, { soundEnabled });
 	const [start] = useSound(startSfx, { soundEnabled });
 	const [pause] = useSound(pauseSfx, { soundEnabled });

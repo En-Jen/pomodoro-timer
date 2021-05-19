@@ -1,9 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import styled from 'styled-components/macro';
 import useSound from 'use-sound';
 
+import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
 import settingsSfx from '../sounds/settingsBtn.mp3';
 import VisuallyHidden from './VisuallyHidden';
 import Button from './Button';
@@ -14,9 +16,9 @@ function Modal({
 	setTimerLength,
 	theme,
 	setTheme,
-	setIsTimerOn,
-	soundEnabled,
+	setIsTimerOn
 }) {
+	const soundEnabled = useSelector(selectSoundEnabled);
 	const [showDialog, setShowDialog] = React.useState(false);
 	const [settings] = useSound(settingsSfx, { soundEnabled });
 
@@ -50,7 +52,6 @@ function Modal({
 						theme={theme}
 						setTheme={setTheme}
 						setIsTimerOn={setIsTimerOn}
-						soundEnabled={soundEnabled}
 					/>
 				</ModalContent>
 			</ModalOverlay>
