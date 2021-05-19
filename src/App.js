@@ -43,7 +43,7 @@ function App() {
 					timerMode={timerMode}
 					setTimerMode={setTimerMode}
 					setTimerText={setTimerText}
-          soundEnabled={soundEnabled}
+					soundEnabled={soundEnabled}
 				/>
 				<Spacer size={48} mobileLargeAndUp={109} desktopAndUp={45} />
 				<Timer
@@ -56,7 +56,7 @@ function App() {
 					timerText={timerText}
 					setTimerText={setTimerText}
 					theme={theme}
-          soundEnabled={soundEnabled}
+					soundEnabled={soundEnabled}
 				/>
 				<Spacer size={79} mobileLargeAndUp={144} desktopAndUp={63} />
 				<Modal
@@ -65,10 +65,9 @@ function App() {
 					theme={theme}
 					setTheme={setTheme}
 					setIsTimerOn={setIsTimerOn}
-          soundEnabled={soundEnabled}
+					soundEnabled={soundEnabled}
 				/>
-        {/* <Spacer size={45} mobileLargeAndUp={109} desktopAndUp={45} /> */}
-        <Attribution />
+				<Attribution />
 			</ThemeProvider>
 		</Wrapper>
 	);
