@@ -100,7 +100,7 @@ const GlobalStyles = createGlobalStyle`
             --font-size-controls: 0.875rem;
             --font-size-h2: 1.75rem;
             --font-size-h3: 0.8125rem;
-            --font-size-timer-text-transform: 1rem;
+            --font-size-timer-text: 1rem;
         }
     }
 
