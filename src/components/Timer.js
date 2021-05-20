@@ -51,7 +51,7 @@ function Timer() {
 		}
 
 		return () => clearInterval(tick);
-	}, [isTimerOn, secondsLeft, timesUp]);
+	}, [isTimerOn, secondsLeft, dispatch, timesUpSound]);
 
 	const resetSecondsLeft = () => {
 		dispatch(resetTimerSecondsLeft());

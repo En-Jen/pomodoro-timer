@@ -25,7 +25,7 @@ function Controls() {
 
 	useEffect(() => {
 		dispatch(resetTimerSecondsLeft());
-	}, [timerMode, timerLength]);
+	}, [timerMode, timerLength, dispatch]);
 
 	// Set left position for ActiveBtnBackground
 	let mobileLeft, tabletLeft;

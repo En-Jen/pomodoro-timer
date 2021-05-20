@@ -36,6 +36,8 @@ export const timerSlice = createSlice({
 						...state,
 						secondsLeft: state.timerLength.long * 60,
 					};
+				default:
+					return state;
 			}
 		},
 		toggleTimer: state => {
