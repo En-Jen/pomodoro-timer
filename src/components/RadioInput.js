@@ -3,14 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 import useSound from 'use-sound';
 
-import { selectTheme, setFont, setColor } from '../features/theme/themeSlice';
-import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
+import { selectTheme, setFont, setColor } from '../features/themeSlice';
 import switchSfx from '../sounds/switch.mp3';
 import CheckIcon from './CheckIcon';
 
 function RadioInput({ prefName, setting, value }) {
 	const theme = useSelector(selectTheme);
-	const soundEnabled = useSelector(selectSoundEnabled);
+	const soundEnabled = useSelector(state => state.soundEnabled);
 	const dispatch = useDispatch();
 	const [switchSetting] = useSound(switchSfx, { soundEnabled });
 

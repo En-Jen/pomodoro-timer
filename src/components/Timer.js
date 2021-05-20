@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 import useSound from 'use-sound';
 import {
@@ -8,64 +8,57 @@ import {
 } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-import { selectTheme } from '../features/theme/themeSlice';
-import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
+import {
+	resetTimerSecondsLeft,
+	selectTimer,
+	toggleTimer,
+	startTimer,
+	pauseTimer,
+	timesUp,
+	countDown,
+} from '../features/timerSlice';
+import { selectTheme } from '../features/themeSlice';
 import timesUpSfx from '../sounds/timesUp.mp3';
 import startSfx from '../sounds/start.mp3';
 import pauseSfx from '../sounds/pause.mp3';
 
-function Timer({
-	secondsLeft,
-	setSecondsLeft,
-	isTimerOn,
-	setIsTimerOn,
-	timerMode,
-	timerLength,
-	timerText,
-	setTimerText
-}) {
+function Timer() {
+	const {
+		timerMode,
+		secondsLeft,
+		timerText,
+		isTimerOn,
+		timerLength,
+	} = useSelector(selectTimer);
 	const theme = useSelector(selectTheme);
-	const soundEnabled = useSelector(selectSoundEnabled);
-	const [timesUp] = useSound(timesUpSfx, { soundEnabled });
+	const soundEnabled = useSelector(state => state.soundEnabled);
+	const dispatch = useDispatch();
+	const [timesUpSound] = useSound(timesUpSfx, { soundEnabled });
 	const [start] = useSound(startSfx, { soundEnabled });
 	const [pause] = useSound(pauseSfx, { soundEnabled });
 
 	useEffect(() => {
 		if (isTimerOn) {
 			var tick = setInterval(() => {
-				setSecondsLeft(secondsLeft => secondsLeft - 1);
+				dispatch(countDown());
 			}, 1000);
 		}
 
 		if (secondsLeft === 0) {
-			timesUp();
-			setIsTimerOn(false);
-			setTimerText('restart');
+			timesUpSound();
+			dispatch(timesUp());
 			clearInterval(tick);
 		}
 
 		return () => clearInterval(tick);
-	}, [
-		isTimerOn,
-		secondsLeft,
-		setSecondsLeft,
-		setIsTimerOn,
-		setTimerText,
-		timesUp,
-	]);
+	}, [isTimerOn, secondsLeft, timesUp]);
 
 	const resetSecondsLeft = () => {
-		if (timerMode === 'pomodoro') {
-			setSecondsLeft(timerLength.pomo * 60);
-		} else if (timerMode === 'short break') {
-			setSecondsLeft(timerLength.short * 60);
-		} else if (timerMode === 'long break') {
-			setSecondsLeft(timerLength.long * 60);
-		}
+		dispatch(resetTimerSecondsLeft());
 	};
 
 	const handleClick = () => {
-		setIsTimerOn(prevState => !prevState);
+		dispatch(toggleTimer());
 
 		if (
 			timerText === 'start' ||
@@ -73,10 +66,10 @@ function Timer({
 			timerText === 'restart'
 		) {
 			start();
-			setTimerText('pause');
+			dispatch(startTimer());
 		} else if (timerText === 'pause') {
 			pause();
-			setTimerText('resume');
+			dispatch(pauseTimer());
 		}
 
 		if (secondsLeft === 0) {

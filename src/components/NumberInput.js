@@ -1,26 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 
-function NumberInput({
-	setIsTimerOn,
-	timerLength,
-	setTimerLength,
-	type,
-	min,
-	max,
-	value,
-}) {
+import { changeNumberInput } from '../features/timerSlice';
+
+function NumberInput({ type, min, max, value }) {
+	const dispatch = useDispatch();
+
 	const handleChange = e => {
-		setIsTimerOn(false);
-		if (e.target.id === 'pomodoro') {
-			setTimerLength({ ...timerLength, pomo: e.target.value });
-		}
-		if (e.target.id === 'short break') {
-			setTimerLength({ ...timerLength, short: e.target.value });
-		}
-		if (e.target.id === 'long break') {
-			setTimerLength({ ...timerLength, long: e.target.value });
-		}
+		const { id, value } = e.target;
+		dispatch(changeNumberInput(id, value));
 	};
 
 	return (

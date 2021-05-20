@@ -1,50 +1,31 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 import useSound from 'use-sound';
 
-import { selectSoundEnabled } from '../features/soundEnabled/soundEnabledSlice';
+import {
+	selectTimer,
+	changeTimerMode,
+	resetTimerSecondsLeft,
+} from '../features/timerSlice';
 import switchSfx from '../sounds/switch.mp3';
 import Button from './Button';
 
-function Controls({
-	setSecondsLeft,
-	timerLength,
-	setIsTimerOn,
-	timerMode,
-	setTimerMode,
-	setTimerText,
-}) {
-	const soundEnabled = useSelector(selectSoundEnabled);
+function Controls() {
+	const { timerMode, timerLength } = useSelector(selectTimer);
+	const soundEnabled = useSelector(state => state.soundEnabled);
+	const dispatch = useDispatch();
 	const [switchControl] = useSound(switchSfx, { soundEnabled });
 
-	// TODO: reuse resetSecondsLeft function used below (found in Timer.js)
-	// to make more DRY
 	const handleClick = e => {
 		switchControl();
-		setTimerMode(e.target.innerHTML);
-		setIsTimerOn(false);
-		setTimerText('start');
-
-		// Reset secondsLeft
-		if (timerMode === 'pomodoro') {
-			setSecondsLeft(timerLength.pomo * 60);
-		} else if (timerMode === 'short break') {
-			setSecondsLeft(timerLength.short * 60);
-		} else if (timerMode === 'long break') {
-			setSecondsLeft(timerLength.long * 60);
-		}
+		dispatch(changeTimerMode(e.target.innerHTML));
+		dispatch(resetTimerSecondsLeft());
 	};
 
 	useEffect(() => {
-		if (timerMode === 'pomodoro') {
-			setSecondsLeft(timerLength.pomo * 60);
-		} else if (timerMode === 'short break') {
-			setSecondsLeft(timerLength.short * 60);
-		} else if (timerMode === 'long break') {
-			setSecondsLeft(timerLength.long * 60);
-		}
-	}, [timerMode, timerLength, setSecondsLeft]);
+		dispatch(resetTimerSecondsLeft());
+	}, [timerMode, timerLength]);
 
 	// Set left position for ActiveBtnBackground
 	let mobileLeft, tabletLeft;

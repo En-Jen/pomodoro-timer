@@ -11,20 +11,16 @@ function Attribution() {
 			>
 				Frontend Mentor
 			</Link>
-			. Coded by{' '}
-			<Link href="https://github.com/En-Jen" target="_blank">
-				Jen Speak
-			</Link>
-			.
+			. Coded by <Link href="https://github.com/En-Jen">Jen Speak</Link>.
 		</Wrapper>
 	);
 }
 
 const Wrapper = styled.div`
-    position: absolute;
-    bottom: 8px;
+	position: absolute;
+	bottom: 8px;
 	font-size: 0.75rem;
-    font-weight: 400;
+	font-weight: 400;
 	text-align: center;
 	color: var(--color-grey-blue);
 `;

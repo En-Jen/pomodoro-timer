@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import soundEnabledReducer from '../features/soundEnabled/soundEnabledSlice';
-import themeReducer from '../features/theme/themeSlice';
+import timerReducer from '../features/timerSlice';
+import soundEnabledReducer from '../features/soundEnabledSlice';
+import themeReducer from '../features/themeSlice';
 
 export const store = configureStore({
 	reducer: {
+		timer: timerReducer,
 		soundEnabled: soundEnabledReducer,
 		theme: themeReducer,
 	},

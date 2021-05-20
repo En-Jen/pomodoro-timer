@@ -1,17 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 
+import { selectTimer } from '../features/timerSlice';
 import VisuallyHidden from './VisuallyHidden';
 import Button from './Button';
 import NumberInput from './NumberInput';
 import RadioInput from './RadioInput';
 
-function Form({
-	setShowDialog,
-	timerLength,
-	setTimerLength,
-	setIsTimerOn,
-}) {
+function Form({ setShowDialog }) {
+	const { timerLength } = useSelector(selectTimer);
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		setShowDialog(false);
@@ -46,27 +45,18 @@ function Form({
 							min="5"
 							max="60"
 							value={timerLength.pomo}
-							setIsTimerOn={setIsTimerOn}
-							timerLength={timerLength}
-							setTimerLength={setTimerLength}
 						/>
 						<NumberInput
 							type="short break"
 							min="1"
 							max="20"
 							value={timerLength.short}
-							setIsTimerOn={setIsTimerOn}
-							timerLength={timerLength}
-							setTimerLength={setTimerLength}
 						/>
 						<NumberInput
 							type="long break"
 							min="5"
 							max="45"
 							value={timerLength.long}
-							setIsTimerOn={setIsTimerOn}
-							timerLength={timerLength}
-							setTimerLength={setTimerLength}
 						/>
 					</NumberInputWrapper>
 				</Fieldset>
