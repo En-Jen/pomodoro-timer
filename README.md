@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
--   [Solution URL](https://your-solution-url.com)
+-   [Solution URL](https://www.frontendmentor.io/solutions/pomodoro-timer-react-redux-styled-components-sound-effects-rbHAFH5Wu)
 -   [Live Site URL](https://pomodoro-timer-mu-seven.vercel.app/)
 
 ## My process
