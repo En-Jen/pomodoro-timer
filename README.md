@@ -47,6 +47,7 @@ Users should be able to:
 -   CSS Grid
 -   Mobile-first workflow
 -   [React](https://reactjs.org/) - JS library
+-   [Redux Toolkit](https://redux-toolkit.js.org/) - For state management
 -   [Styled Components](https://styled-components.com/) - For styles
 -   [Reach UI](https://reach.tech/) - Accessible React component library. Used the Dialog (Modal) component
 -   [useSound Hook](https://github.com/joshwcomeau/use-sound) - React hook for playing sound effects
@@ -54,35 +55,19 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+1. My major focus for this project was to use Redux for state management. First I wanted to make sure I could get all the functionality of the app working with just using the useState hook for state which worked, but I had to do a lot of prop drilling because it turned out that there was a lot of state that needed to be shared between different components and some of those components were deeply nested. I quickly saw how the maintainability of the app was suffering, so I opted for refactoring the app to use [Redux](https://redux.js.org/), [React Redux](https://react-redux.js.org/), and [Redux Toolkit](https://redux-toolkit.js.org/). I had previously shied away from using Redux because of all the boilerplate it requires, but I was pleased to find that Redux Toolkit really cut down on the amount of boilerplate needed. It's also really nice that you can write code that mutates the state inside the case reducers passed to `createSlice()`.
 
-To see how you can add code snippets, see below:
+2. This was my first project where I got a chance to implement sound in the App. The useSound Hook makes it surprisingly easy, but you are required to find your own sound files which required a bit of digging around for usable sounds on [freesound](https://freesound.org/). After I selected the sounds I wanted to use, I edited them in [Audacity](https://www.audacityteam.org/) and then imported them into the project.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-	color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-	console.log('🎉');
-};
-```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+1. I'd like to continue learning how to use Redux and may try to use it without the [Redux Toolkit](https://redux-toolkit.js.org/) in my next project so that I feel more comfortable using it with the extra boilerplate that's needed when you don't use the Toolkit.
 
 ### Useful resources
 
--   [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
--   [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
+-   [useSound Blog post](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/) - This blog post by Josh W Comeau is a nice intro to how to use sound on the web including how to find and prepare sounds and examples of how to use them.
+-   [codecademy's Redux course](https://www.codecademy.com/learn/paths/front-end-engineer-career-path) - This is a resource that requires a pro account on codecademy.com, but if you have access to it or are willing to pay for it, this is the most helpful resource I've come across for learning Redux.
 ## Author
 
 -   Frontend Mentor - [@En-Jen](https://www.frontendmentor.io/profile/En-Jen)

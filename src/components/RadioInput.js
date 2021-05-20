@@ -14,14 +14,14 @@ function RadioInput({ prefName, setting, value }) {
 	const [switchSetting] = useSound(switchSfx, { soundEnabled });
 
 	const handleChange = e => {
+		const { name, value } = e.target;
+
 		switchSetting();
-		if (e.target.name === 'font') {
-			// setTheme({ ...theme, font: e.target.value });
-			dispatch(setFont(e.target.value));
+		if (name === 'font') {
+			dispatch(setFont(value));
 		}
-		if (e.target.name === 'color') {
-			// setTheme({ ...theme, color: e.target.value });
-			dispatch(setColor(e.target.value));
+		if (name === 'color') {
+			dispatch(setColor(value));
 		}
 	};
 
