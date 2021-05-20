@@ -86,11 +86,11 @@ const GlobalStyles = createGlobalStyle`
         --color-grey-border: hsl(0, 2%, 89%);
 
         /* Fonts */
-        --font-size-timer: 5rem;
+        --font-size-timer: 4rem;
         --font-size-controls: 0.75rem;
         --font-size-h2: 1.25rem;
         --font-size-h3: 0.6875rem;
-        --font-size-h4: 0.875rem;
+        --font-size-timer-text: 0.875rem;
         --font-size-label: 0.75rem;
         --font-size-num-input: 0.875rem;
         --font-size-apply: 1rem;
@@ -100,7 +100,7 @@ const GlobalStyles = createGlobalStyle`
             --font-size-controls: 0.875rem;
             --font-size-h2: 1.75rem;
             --font-size-h3: 0.8125rem;
-            --font-size-h4: 1rem;
+            --font-size-timer-text-transform: 1rem;
         }
     }
 
@@ -133,16 +133,6 @@ const GlobalStyles = createGlobalStyle`
 
         @media (min-width: 600px) {
             letter-spacing: 5px;
-        }
-    }
-
-    h4 {
-        font-size: var(--font-size-h4);
-        letter-spacing: 13px;
-        text-transform: uppercase;
-
-        @media (min-width: 600px) {
-            letter-spacing: 16px;
         }
     }
 

@@ -115,8 +115,8 @@ function Timer() {
 						trailColor: 'transparent',
 					})}
 				>
-					{formatTimeLeft(secondsLeft)}
-					<h4>{timerText}</h4>
+					<TimerNumbers>{formatTimeLeft(secondsLeft)}</TimerNumbers>
+					<TimerText>{timerText}</TimerText>
 				</CircularProgressbarWithChildren>
 			</TimerDisplay>
 		</Wrapper>
@@ -147,7 +147,6 @@ const TimerDisplay = styled.button`
 	padding: 8px;
 	background-color: var(--color-dark-navy);
 	color: var(--color-grey-blue);
-	font-size: var(--font-size-timer);
 	cursor: pointer;
 
 	@media (min-width: 600px) {
@@ -158,15 +157,33 @@ const TimerDisplay = styled.button`
 
 	&:focus {
 		outline: none;
-
-		h4 {
-			outline: 2px dotted var(--color-grey-blue);
-			outline-offset: 2px;
-		}
 	}
 
 	&:active {
 		transform: scale(0.98);
+	}
+`;
+
+const TimerNumbers = styled.span`
+	font-size: var(--font-size-timer);
+`;
+
+const TimerText = styled.span`
+	font-size: var(--font-size-timer-text);
+	text-transform: uppercase;
+	letter-spacing: 13px;
+	// Offset letter-spacing after the last letter so that
+	// text is still centered
+	margin-right: -13px;
+
+	@media (min-width: 600px) {
+		letter-spacing: 16px;
+		margin-right: -16px;
+	}
+
+	${TimerDisplay}:focus & {
+		outline: 2px dotted var(--color-grey-blue);
+		outline-offset: 2px;
 	}
 `;
 
